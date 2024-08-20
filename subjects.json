@@ -1,0 +1,482 @@
+[
+  {
+    "displayName": "Chemistry",
+    "icon": "beaker",
+    "topics": [
+      {
+        "index": 1,
+        "displayName": "Atomic structure",
+        "bg": "primary",
+        "jsonFile": "c1",
+        "games": 12
+      },
+      {
+        "index": 2,
+        "displayName": "Structure and bonding",
+        "bg": "danger",
+        "jsonFile": "c2",
+        "games": 12
+      },
+      {
+        "index": 3,
+        "displayName": "Quantitative Chemistry",
+        "bg": "orange",
+        "jsonFile": "c3-quantitative-chemistry",
+        "games": 12
+      },
+      {
+        "index": 4,
+        "displayName": "Electrolysis",
+        "bg": "warning",
+        "jsonFile": "chemistry-electrolysis",
+        "games": 12
+      },
+      {
+        "index": 5,
+        "displayName": "Energy changes",
+        "bg": "lime",
+        "jsonFile": "chemistry-energy-changes",
+        "games": 12
+      }
+    ]
+  },
+  {
+    "displayName": "Computer Science",
+    "icon": "motherboard",
+    "topics": [
+      {
+        "index": 1,
+        "displayName": "Algorithms",
+        "bg": "primary",
+        "jsonFile": "unit1",
+        "games": 12
+      },
+      {
+        "index": 2,
+        "displayName": "Programming",
+        "bg": "success",
+        "jsonFile": "unit2",
+        "games": 12
+      },
+      {
+        "index": 3,
+        "displayName": "Data representation",
+        "bg": "orange",
+        "jsonFile": "unit3",
+        "games": 12
+      },
+      {
+        "index": 4,
+        "displayName": "Computer systems",
+        "bg": "purple",
+        "jsonFile": "unit4",
+        "games": 12
+      },
+      {
+        "index": 5,
+        "displayName": "Computer networks",
+        "bg": "danger",
+        "jsonFile": "unit5",
+        "games": 12
+      }
+    ]
+  },
+  {
+    "displayName": "Biology",
+    "icon": "magnifying-glass",
+    "topics": [
+      {
+        "index": 1,
+        "displayName": "Cell biology",
+        "bg": "lime",
+        "jsonFile": "b1",
+        "games": 12
+      },
+      {
+        "index": 2,
+        "displayName": "Organisation",
+        "bg": "turquoise",
+        "jsonFile": "b2-organisation",
+        "games": 12
+      },
+      {
+        "index": 3,
+        "displayName": "Infection and response",
+        "bg": "primary",
+        "jsonFile": "b3-infection-and-response",
+        "games": 12
+      },
+      {
+        "index": 4,
+        "displayName": "Homeostasis and response",
+        "bg": "purple",
+        "jsonFile": "homeostasis-and-response",
+        "games": 12
+      }
+    ]
+  },
+  {
+    "displayName": "History",
+    "icon": "hourglass",
+    "topics": [
+      {
+        "index": 1,
+        "displayName": "Cold War",
+        "jsonFile": "cold_war",
+        "games": 14,
+        "bg": "danger"
+      },
+      {
+        "index": 2,
+        "displayName": "Germany 1918-1939",
+        "jsonFile": "germany1918-1939",
+        "games": 12,
+        "bg": "warning"
+      }
+    ]
+  },
+  {
+    "displayName": "English",
+    "icon": "book",
+    "topics": [
+      {
+        "index": 1,
+        "displayName": "Macbeth",
+        "jsonFile": "macbeth",
+        "games": 2,
+        "bg": "info"
+      },
+      {
+        "index": 2,
+        "displayName": "A Christmas Carol",
+        "jsonFile": "christmas_carol",
+        "games": 2,
+        "bg": "success"
+      },
+      {
+        "index": 3,
+        "displayName": "Vocabulary (Easy)",
+        "bg": "primary",
+        "jsonFile": "english-vocab-easy",
+        "games": 12
+      },
+      {
+        "index": 4,
+        "displayName": "Vocabulary (Medium)",
+        "bg": "warning",
+        "jsonFile": "english-vocab-medium",
+        "games": 12
+      },
+      {
+        "index": 5,
+        "displayName": "Vocabulary (Hard)",
+        "bg": "turquoise",
+        "jsonFile": "english-vocab-hard",
+        "games": 12
+      }
+    ]
+  },
+  {
+    "displayName": "Music",
+    "icon": "quaver",
+    "topics": [
+      {
+        "index": 1,
+        "displayName": "Describing music",
+        "jsonFile": "describing_music",
+        "games": 12,
+        "bg": "success"
+      },
+      {
+        "index": 2,
+        "displayName": "Samba",
+        "jsonFile": "samba",
+        "games": 12,
+        "bg": "turquoise"
+      },
+      {
+        "index": 3,
+        "displayName": "Calypso",
+        "jsonFile": "calypso",
+        "games": 12,
+        "bg": "warning"
+      },
+      {
+        "index": 4,
+        "displayName": "Film music",
+        "jsonFile": "film-music",
+        "games": 12,
+        "bg": "orange"
+      },
+      {
+        "index": 5,
+        "displayName": "Computer game music",
+        "jsonFile": "video-game-music",
+        "games": 12,
+        "bg": "danger"
+      }
+    ]
+  },
+  {
+    "displayName": "Physics",
+    "icon": "apple",
+    "topics": [
+      {
+        "index": 1,
+        "displayName": "Equations",
+        "jsonFile": "physics_equations",
+        "games": 1,
+        "bg": "warning"
+      },
+      {
+        "index": 2,
+        "displayName": "Energy",
+        "jsonFile": "physics-energy",
+        "games": 28,
+        "bg": "success"
+      },
+      {
+        "index": 3,
+        "displayName": "Electricity",
+        "jsonFile": "physics-electricity",
+        "games": 28,
+        "bg": "turquoise"
+      },
+      {
+        "index": 4,
+        "displayName": "Particle model of matter",
+        "jsonFile": "physics-particle-model",
+        "games": 12,
+        "bg": "info"
+      }
+    ]
+  },
+  {
+    "displayName": "German",
+    "icon": "pretzel",
+    "topics": [
+      {
+        "index": 1,
+        "displayName": "Acronyms",
+        "jsonFile": "acronyms",
+        "games": 12,
+        "bg": "primary"
+      },
+      {
+        "index": 2,
+        "displayName": "Colours",
+        "jsonFile": "colours",
+        "games": 12,
+        "bg": "info"
+      },
+      {
+        "index": 3,
+        "displayName": "Common adjectives",
+        "jsonFile": "adjectives",
+        "games": 12,
+        "bg": "warning"
+      },
+      {
+        "index": 4,
+        "displayName": "Common adverbs",
+        "jsonFile": "adverbs",
+        "games": 12,
+        "bg": "orange"
+      },
+      {
+        "index": 5,
+        "displayName": "Common prepositions",
+        "jsonFile": "prepositions",
+        "games": 12,
+        "bg": "turquoise"
+      },
+      {
+        "index": 6,
+        "displayName": "Common verbs",
+        "jsonFile": "verbs",
+        "games": 12,
+        "bg": "lime"
+      },
+      {
+        "index": 7,
+        "displayName": "Cultural life",
+        "jsonFile": "cultural-life",
+        "games": 12,
+        "bg": "purple"
+      },
+      {
+        "index": 8,
+        "displayName": "Daily life, food and drink",
+        "jsonFile": "daily-life-food-drink",
+        "games": 12,
+        "bg": "danger"
+      },
+      {
+        "index": 9,
+        "displayName": "Dealing with problems",
+        "jsonFile": "problems",
+        "games": 12,
+        "bg": "success"
+      },
+      {
+        "index": 10,
+        "displayName": "Dialogue, messaging and social media",
+        "jsonFile": "dialogue-and-messaging",
+        "games": 12,
+        "bg": "orange"
+      },
+      {
+        "index": 11,
+        "displayName": "Directions",
+        "jsonFile": "directions",
+        "games": 12,
+        "bg": "warning"
+      },
+      {
+        "index": 12,
+        "displayName": "Dress and style",
+        "jsonFile": "dress-and-style",
+        "games": 12,
+        "bg": "info"
+      },
+      {
+        "index": 13,
+        "displayName": "Geography",
+        "jsonFile": "geography",
+        "games": 12,
+        "bg": "primary"
+      },
+      {
+        "index": 14,
+        "displayName": "International and Global Dimension",
+        "jsonFile": "international-and-global-dimension",
+        "games": 12,
+        "bg": "info"
+      },
+      {
+        "index": 15,
+        "displayName": "Local Area, Holiday and Travel",
+        "jsonFile": "local-area-holiday-travel",
+        "games": 12,
+        "bg": "warning"
+      },
+      {
+        "index": 16,
+        "displayName": "Numbers",
+        "jsonFile": "numbers",
+        "games": 12,
+        "bg": "orange"
+      },
+      {
+        "index": 17,
+        "displayName": "Quantities and Measures",
+        "jsonFile": "quantities-and-measures",
+        "games": 12,
+        "bg": "turquoise"
+      },
+      {
+        "index": 18,
+        "displayName": "Relations, Relationships, Personal and Physical Characteristics",
+        "jsonFile": "relations-relationships-personal-and-physical-characteristics",
+        "games": 12,
+        "bg": "lime"
+      },
+      {
+        "index": 19,
+        "displayName": "School",
+        "jsonFile": "school",
+        "games": 12,
+        "bg": "purple"
+      },
+      {
+        "index": 20,
+        "displayName": "Social conventions",
+        "jsonFile": "social-conventions",
+        "games": 12,
+        "bg": "danger"
+      },
+      {
+        "index": 21,
+        "displayName": "Times, Days, Months and Seasons",
+        "jsonFile": "times-days-months-seasons",
+        "games": 12,
+        "bg": "success"
+      },
+      {
+        "index": 22,
+        "displayName": "Useful words and phrases",
+        "jsonFile": "useful-words-and-expressions",
+        "games": 12,
+        "bg": "orange"
+      },
+      {
+        "index": 23,
+        "displayName": "Weather",
+        "jsonFile": "weather",
+        "games": 12,
+        "bg": "warning"
+      },
+      {
+        "index": 24,
+        "displayName": "Work",
+        "jsonFile": "work",
+        "games": 12,
+        "bg": "info"
+      }
+    ]
+  },
+  {
+    "displayName": "Maths",
+    "icon": "percent",
+    "topics": [
+      {
+        "index": 1,
+        "displayName": "Trigonometric Exact Values",
+        "bg": "primary",
+        "jsonFile": "sohcahtoa_exact_values",
+        "games": 12
+      }
+    ]
+  },
+  {
+    "displayName": "Economics",
+    "icon": "bank",
+    "topics": [
+      {
+        "index": 1,
+        "displayName": "Economic foundations",
+        "bg": "primary",
+        "jsonFile": "economic-foundations",
+        "games": 12
+      },
+      {
+        "index": 2,
+        "displayName": "Resource allocation",
+        "bg": "danger",
+        "jsonFile": "resource-allocation",
+        "games": 12
+      },
+      {
+        "index": 3,
+        "displayName": "How prices are determined",
+        "bg": "warning",
+        "jsonFile": "how-prices-are-determined",
+        "games": 12
+      },
+      {
+        "index": 4,
+        "displayName": "Production, costs, revenue and profit",
+        "bg": "success",
+        "jsonFile": "production-costs-revenue-profit",
+        "games": 12
+      },
+      {
+        "index": 5,
+        "displayName": "How the economy works",
+        "bg": "info",
+        "jsonFile": "how-the-economy-works",
+        "games": 12
+      }
+    ]
+  }
+]

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rasper Revision</title>
+
+  <!-- FAVICON -->
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+
+  <!-- BOOTSTRAP STYLES -->
+  <link href="bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+  <!-- BOOTSTRAP SCRIPTS-->
+  <script src="bootstrap.bundle.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"
+    defer></script>
+
+  <!-- BOOTSTRAP ICONS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- STYLES -->
+  <link href="style.css" rel="stylesheet">
+
+</head>
+
+<body>
+  <div class="flex_col main_wrapper">
+    <section class="flex_col">
+      <div style="flex-grow:1;margin:50px;">
+        <div class="modal fade" id="games-modal" tabindex="-1">
+          <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content dark">
+              <div class="modal-header border-secondary">
+                <h5 class="modal-title">Select an activity</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                  aria-label="Close"></button>
+              </div>
+              <div class="modal-body d-flex">
+                <div class="card text-bg-dark border-secondary game game-exam">
+                  <div class="card-body flex_col justify-content-between">
+                    <div class="mb-1">Exam Questions</div>
+                    <small>Exam questions from past papers by the major exam boards</small>
+                    <button id="exam-questions" class="rbtn rasper-green m-0 mt-3">Begin</button>
+                  </div>
+                </div>
+                <div class="card text-bg-dark border-secondary game game-matchup">
+                  <div class="card-body flex_col justify-content-between">
+                    <div class="mb-1">Matchup</div>
+                    <small>Match the questions to their answers and the questions to their definitions</small>
+                    <button id="matchup" class="rbtn rasper-green m-0 mt-3">Begin</button>
+                  </div>
+                </div>
+                <div class="card text-bg-dark border-secondary game game-quiz">
+                  <div class="card-body flex_col justify-content-between">
+                    <div class="mb-1">Quiz</div>
+                    <small>Multiple choice quiz where you select the correct answer from 4 options</small>
+                    <button id="quiz" class="rbtn rasper-green m-0 mt-3">Begin</button>
+                  </div>
+                </div>
+                <div class="card text-bg-dark border-secondary game game-blank">
+                  <div class="card-body flex_col justify-content-between">
+                    <div class="mb-1">Fill in the blank</div>
+                    <small>Figure out which words go in the gaps in the incomplete quotation.</small>
+                    <button id="blank" class="rbtn rasper-green m-0 mt-3">Begin</button>
+                  </div>
+                </div>
+                <div class="card text-bg-dark border-secondary game game-equations">
+                  <div class="card-body flex_col justify-content-between">
+                    <div class="mb-1">Equations</div>
+                    <small>Try to recall the relationships between variables in these equations</small>
+                    <button id="equations" class="rbtn rasper-green m-0 mt-3">Begin</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--
+        <button type="button" class="rbtn primary" data-bs-toggle="modal" data-bs-target="#games-modal">
+          Launch demo modal
+        </button>
+        -->
+
+        <div class="subjects container"></div>
+      </div>
+    </section>
+  </div>
+
+  <script src="sidebar.js"></script>
+  <script>
+    var topic_chosen = null;
+
+    document.addEventListener("DOMContentLoaded", () => {
+
+      document.querySelectorAll('.game').forEach(game => {
+        const btn = game.querySelector('.rbtn');
+        btn.addEventListener('click', () => {
+          switch (btn.id) {
+            case "matchup": location.href = `/matchup/?json=${topic_chosen}`;
+            case "quiz": location.href = `/quiz/?json=${topic_chosen}`;
+            case "blank": location.href = `/fill-in-the-blank?json=${topic_chosen}`;
+            case "equations": location.href = '/equations?json=physics_equations.json';
+            case "exam-questions": location.href = `/exam-questions?json=${topic_chosen}`;
+          }
+        });
+      });
+
+      createSubjectButtons();
+
+      async function createSubjectButtons() {
+        const data = await (await fetch('subjects.json')).json();
+
+        const col = document.createElement('div');
+        col.classList.add('home-col');
+        document.querySelector('.subjects').append(col);
+
+        data.forEach((subject, i) => {
+          const subject_icon = document.createElement('img');
+          subject_icon.classList.add('subject-icon');
+          subject_icon.src = `icons/${subject.icon}`;
+
+          const subject_btn = document.createElement('button');
+          subject_btn.classList.add('subject-btn');
+          subject_btn.appendChild(subject_icon);
+          subject_btn.innerHTML += (`<div class=d-inline>${subject.displayName}</div>`);
+
+          col.appendChild(subject_btn);
+        });
+      }
+    }); 
+  </script>
+
+</body>
+
+</html>
