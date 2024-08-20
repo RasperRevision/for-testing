@@ -28,7 +28,7 @@
 
 </head>
 
-<body>
+<body style="overflow-y: hidden;">
   <div class="flex_col main_wrapper">
     <section class="flex_col">
       <div style="flex-grow:1;margin:50px;">
@@ -125,10 +125,48 @@
           subject_icon.classList.add('subject-icon');
           subject_icon.src = `icons/${subject.icon}`;
 
+          const subject_header = document.createElement('div');
+          subject_header.classList.add('subject-header');
+          subject_header.appendChild(subject_icon);
+          subject_header.innerHTML += `<div class=d-inline>${subject.displayName}</div>`;
+
           const subject_btn = document.createElement('button');
-          subject_btn.classList.add('subject-btn');
-          subject_btn.appendChild(subject_icon);
-          subject_btn.innerHTML += (`<div class=d-inline>${subject.displayName}</div>`);
+          subject_btn.classList.add('subject-btn', i);
+          subject_btn.appendChild(subject_header);
+
+          subject_btn.addEventListener('click', () => {
+            if (!subject_btn.classList.contains('lg')) {
+              col.childNodes.forEach(child => {
+                if (child != subject_btn) child.style.transform = 'translateX(-100vw)';
+              });
+              col.prepend(subject_btn);
+
+              const subject_content = document.createElement('div');
+              subject_content.classList.add('w-100', 'px-1');
+              setInterval(() => {
+                subject_content.style.overflowY = 'auto';
+              }, 400)
+              subject_btn.appendChild(subject_content);
+
+              subject.topics.forEach((topic, j) => {
+                const topic_btn = document.createElement('button');
+                topic_btn.classList.add('topic-btn');
+                topic_btn.textContent = topic.displayName;
+                topic_btn.style.border = 'none';
+                if (j != subject.topics.length - 1) {
+                  topic_btn.style.borderBottom = '1px gray solid';
+                }
+                subject_content.appendChild(topic_btn);
+              });
+            } else {
+              col.insertBefore(subject_btn, col.children[parseInt(subject_btn.classList[1]) + 1]);
+              col.childNodes.forEach(child => { child.style.transform = '' });
+              subject_btn.childNodes.forEach(child => {
+                if (!child.classList.contains('subject-header')) child.remove();
+              });
+            }
+            setTimeout(() => subject_btn.classList.toggle('lg'), 50);
+          });
 
           col.appendChild(subject_btn);
         });

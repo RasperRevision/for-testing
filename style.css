@@ -7,7 +7,6 @@
 *,
 ::after,
 ::before {
-  box-sizing: border-box;
   color: white;
 }
 
@@ -106,12 +105,26 @@ body::-webkit-scrollbar {
 
 .subject-btn {
   background-color: black;
+  font-size: 1.2rem;
+  border: none;
+  height: 80px;
+  display: flex;
+  align-items: start !important;
+  vertical-align: top;
+  flex-direction: column;
+  transition: transform 500ms ease, height 500ms ease;
+}
+
+.subject-header {
   text-align: start;
   display: flex;
   align-items: center;
   gap: 20px;
-  font-size: 1.2rem;
-  border: none;
+}
+
+.subject-btn.lg {
+  height: calc(100vh - 230px) !important;
+  align-items: start;
 }
 
 .subject-icon {
@@ -119,8 +132,16 @@ body::-webkit-scrollbar {
   aspect-ratio: 1 !important;
   height: 60px;
   margin: 5px;
+  margin-block: 10px;
   display: inline-block;
   border-radius: 5px;
+}
+
+.topic-btn {
+  background: none;
+  text-align: start;
+  padding: 5px;
+  width: 100%;
 }
 
 .opt {
