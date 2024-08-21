@@ -151,13 +151,15 @@
               }, 500)
               subject_wrapper.appendChild(subject_content);
 
+              var queue = [];
+
               subject.topics.forEach((topic, j) => {
                 const topic_btn = document.createElement('button');
                 topic_btn.classList.add('topic-btn');
                 topic_btn.textContent = topic.displayName;
                 topic_btn.style.border = 'none';
 
-                if (j != subject.topics.length - 1) topic_btn.style.borderBottom = '1px gray solid';
+                topic_btn.style.borderBottom = '1px gray solid';
 
                 if (topic.topics) var hasSubtopics = true;
                 else {
@@ -167,6 +169,7 @@
 
                 topic_btn.addEventListener('click', () => {
                   if (hasSubtopics) {
+                    subject_content.childNodes.forEach(child => child.remove());
                     topic.topics.forEach((subtopic, k) => {
                       const subtopic_btn = document.createElement('button');
                       subtopic_btn.classList.add('topic-btn');
@@ -179,17 +182,32 @@
                         topic_chosen = topic.jsonFile
                       );
 
-                      if (j != topic.subtopics.length - 1) {
+                      if (j != topic.topics.length - 1) {
                         subtopic_btn.style.borderBottom = '1px gray solid';
                       }
-                    })
+
+                      subject_content.appendChild(subtopic_btn);
+                    });
                   } else {
                     topic_chosen = topic.jsonFile;
                   }
                 });
-
-                subject_content.appendChild(topic_btn);
+                if (topic.resource) queue.push(topic_btn);
+                else subject_content.appendChild(topic_btn);
               });
+
+              subject_content.children[subject_content.children.length - 1].style.borderBottom = 'none';
+
+              if (queue[0]) {
+                const resources_title = document.createElement('p');
+                resources_title.classList.add('mt-4', 'fs-6')
+                resources_title.textContent = 'Additional resources: ';
+                subject_content.append(resources_title);
+
+                queue.forEach(btn => subject_content.appendChild(btn));
+              }
+
+              subject_content.children[subject_content.children.length - 1].style.borderBottom = 'none';
             } else {
               col.insertBefore(subject_wrapper, col.children[parseInt(subject_wrapper.classList[1]) + 1]);
               col.childNodes.forEach(child => { child.style.transform = '' });
