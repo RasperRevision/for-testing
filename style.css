@@ -103,10 +103,9 @@ body::-webkit-scrollbar {
   height: 100%;
 }
 
-.subject-btn {
+.subject-wrapper {
   background-color: black;
   font-size: 1.2rem;
-  border: none;
   height: 80px;
   display: flex;
   align-items: start !important;
@@ -115,14 +114,16 @@ body::-webkit-scrollbar {
   transition: transform 500ms ease, height 500ms ease;
 }
 
-.subject-header {
+.subject-btn {
   text-align: start;
+  background: none;
+  border: none;
   display: flex;
   align-items: center;
   gap: 20px;
 }
 
-.subject-btn.lg {
+.subject-wrapper.lg {
   height: calc(100vh - 230px) !important;
   align-items: start;
 }

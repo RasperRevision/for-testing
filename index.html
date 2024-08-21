@@ -25,7 +25,6 @@
 
   <!-- STYLES -->
   <link href="style.css" rel="stylesheet">
-
 </head>
 
 <body style="overflow-y: hidden;">
@@ -41,52 +40,46 @@
                   aria-label="Close"></button>
               </div>
               <div class="modal-body d-flex">
-                <div class="card text-bg-dark border-secondary game game-exam">
+                <div class="card text-bg-dark border-secondary game">
                   <div class="card-body flex_col justify-content-between">
                     <div class="mb-1">Exam Questions</div>
                     <small>Exam questions from past papers by the major exam boards</small>
-                    <button id="exam-questions" class="rbtn rasper-green m-0 mt-3">Begin</button>
+                    <button id="exam-questions" class="rbtn rasper-green m-0 mt-3"
+                      onclick="startGame(this)">Begin</button>
                   </div>
                 </div>
-                <div class="card text-bg-dark border-secondary game game-matchup">
+                <div class="card text-bg-dark border-secondary game">
                   <div class="card-body flex_col justify-content-between">
                     <div class="mb-1">Matchup</div>
                     <small>Match the questions to their answers and the questions to their definitions</small>
-                    <button id="matchup" class="rbtn rasper-green m-0 mt-3">Begin</button>
+                    <button id="matchup" class="rbtn rasper-green m-0 mt-3" onclick="startGame(this)">Begin</button>
                   </div>
                 </div>
-                <div class="card text-bg-dark border-secondary game game-quiz">
+                <div class="card text-bg-dark border-secondary game">
                   <div class="card-body flex_col justify-content-between">
                     <div class="mb-1">Quiz</div>
                     <small>Multiple choice quiz where you select the correct answer from 4 options</small>
-                    <button id="quiz" class="rbtn rasper-green m-0 mt-3">Begin</button>
+                    <button id="quiz" class="rbtn rasper-green m-0 mt-3" onclick="startGame(this)">Begin</button>
                   </div>
                 </div>
-                <div class="card text-bg-dark border-secondary game game-blank">
+                <div class="card text-bg-dark border-secondary game">
                   <div class="card-body flex_col justify-content-between">
                     <div class="mb-1">Fill in the blank</div>
                     <small>Figure out which words go in the gaps in the incomplete quotation.</small>
-                    <button id="blank" class="rbtn rasper-green m-0 mt-3">Begin</button>
+                    <button id="blank" class="rbtn rasper-green m-0 mt-3" onclick="startGame(this)">Begin</button>
                   </div>
                 </div>
-                <div class="card text-bg-dark border-secondary game game-equations">
+                <div class="card text-bg-dark border-secondary game">
                   <div class="card-body flex_col justify-content-between">
                     <div class="mb-1">Equations</div>
                     <small>Try to recall the relationships between variables in these equations</small>
-                    <button id="equations" class="rbtn rasper-green m-0 mt-3">Begin</button>
+                    <button id="equations" class="rbtn rasper-green m-0 mt-3" onclick="startGame(this)">Begin</button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
-        <!--
-        <button type="button" class="rbtn primary" data-bs-toggle="modal" data-bs-target="#games-modal">
-          Launch demo modal
-        </button>
-        -->
-
         <div class="subjects container"></div>
       </div>
     </section>
@@ -94,22 +87,31 @@
 
   <script src="sidebar.js"></script>
   <script>
+
     var topic_chosen = null;
 
-    document.addEventListener("DOMContentLoaded", () => {
+    function startGame(btn) {
+      console.log(btn.id)
+      switch (btn.id) {
+        case "matchup":
+          location.href = `/matchup/?json=${topic_chosen}`;
+          break;
+        case "quiz":
+          location.href = `/quiz/?json=${topic_chosen}`;
+          break;
+        case "blank":
+          location.href = `/fill-in-the-blank?json=${topic_chosen}`;
+          break;
+        case "equations":
+          location.href = '/equations?json=physics_equations.json';
+          break;
+        case "exam-questions":
+          location.href = `/exam-questions?json=${topic_chosen}`;
+          break;
+      }
+    }
 
-      document.querySelectorAll('.game').forEach(game => {
-        const btn = game.querySelector('.rbtn');
-        btn.addEventListener('click', () => {
-          switch (btn.id) {
-            case "matchup": location.href = `/matchup/?json=${topic_chosen}`;
-            case "quiz": location.href = `/quiz/?json=${topic_chosen}`;
-            case "blank": location.href = `/fill-in-the-blank?json=${topic_chosen}`;
-            case "equations": location.href = '/equations?json=physics_equations.json';
-            case "exam-questions": location.href = `/exam-questions?json=${topic_chosen}`;
-          }
-        });
-      });
+    document.addEventListener("DOMContentLoaded", () => {
 
       createSubjectButtons();
 
@@ -125,50 +127,80 @@
           subject_icon.classList.add('subject-icon');
           subject_icon.src = `icons/${subject.icon}`;
 
-          const subject_header = document.createElement('div');
-          subject_header.classList.add('subject-header');
-          subject_header.appendChild(subject_icon);
-          subject_header.innerHTML += `<div class=d-inline>${subject.displayName}</div>`;
-
           const subject_btn = document.createElement('button');
-          subject_btn.classList.add('subject-btn', i);
-          subject_btn.appendChild(subject_header);
+          subject_btn.classList.add('subject-btn', 'w-100');
+          subject_btn.appendChild(subject_icon);
+          subject_btn.innerHTML += `<div class=d-inline>${subject.displayName}</div>`;
+
+          const subject_wrapper = document.createElement('div');
+          subject_wrapper.classList.add('subject-wrapper', i);
+          subject_wrapper.appendChild(subject_btn);
 
           subject_btn.addEventListener('click', () => {
-            if (!subject_btn.classList.contains('lg')) {
+            if (!subject_wrapper.classList.contains('lg')) {
               col.childNodes.forEach(child => {
-                if (child != subject_btn) child.style.transform = 'translateX(-100vw)';
+                if (child != subject_wrapper) child.style.transform = 'translateX(-100vw)';
               });
-              col.prepend(subject_btn);
+              col.prepend(subject_wrapper);
 
               const subject_content = document.createElement('div');
               subject_content.classList.add('w-100', 'px-1');
+              subject_content.style.overflowY = 'hidden';
               setInterval(() => {
                 subject_content.style.overflowY = 'auto';
-              }, 400)
-              subject_btn.appendChild(subject_content);
+              }, 500)
+              subject_wrapper.appendChild(subject_content);
 
               subject.topics.forEach((topic, j) => {
                 const topic_btn = document.createElement('button');
                 topic_btn.classList.add('topic-btn');
                 topic_btn.textContent = topic.displayName;
                 topic_btn.style.border = 'none';
-                if (j != subject.topics.length - 1) {
-                  topic_btn.style.borderBottom = '1px gray solid';
+
+                if (j != subject.topics.length - 1) topic_btn.style.borderBottom = '1px gray solid';
+
+                if (topic.topics) var hasSubtopics = true;
+                else {
+                  topic_btn.setAttribute('data-bs-toggle', 'modal');
+                  topic_btn.setAttribute('data-bs-target', '#games-modal');
                 }
+
+                topic_btn.addEventListener('click', () => {
+                  if (hasSubtopics) {
+                    topic.topics.forEach((subtopic, k) => {
+                      const subtopic_btn = document.createElement('button');
+                      subtopic_btn.classList.add('topic-btn');
+                      subtopic_btn.textContent = subtopic.displayName;
+                      subtopic_btn.style.border = 'none';
+                      subtopic_btn.setAttribute('data-bs-toggle', 'modal');
+                      subtopic_btn.setAttribute('data-bs-target', '#gamesModal');
+
+                      subtopic_btn.addEventListener('click', () =>
+                        topic_chosen = topic.jsonFile
+                      );
+
+                      if (j != topic.subtopics.length - 1) {
+                        subtopic_btn.style.borderBottom = '1px gray solid';
+                      }
+                    })
+                  } else {
+                    topic_chosen = topic.jsonFile;
+                  }
+                });
+
                 subject_content.appendChild(topic_btn);
               });
             } else {
-              col.insertBefore(subject_btn, col.children[parseInt(subject_btn.classList[1]) + 1]);
+              col.insertBefore(subject_wrapper, col.children[parseInt(subject_wrapper.classList[1]) + 1]);
               col.childNodes.forEach(child => { child.style.transform = '' });
-              subject_btn.childNodes.forEach(child => {
-                if (!child.classList.contains('subject-header')) child.remove();
+              subject_wrapper.childNodes.forEach(child => {
+                if (!child.classList.contains('subject-btn')) child.remove();
               });
             }
-            setTimeout(() => subject_btn.classList.toggle('lg'), 50);
+            setTimeout(() => subject_wrapper.classList.toggle('lg'), 50);
           });
 
-          col.appendChild(subject_btn);
+          col.appendChild(subject_wrapper);
         });
       }
     }); 
