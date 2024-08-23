@@ -119,19 +119,19 @@
       },
       {
         "displayName": "Vocabulary (Easy)",
-        "bg": "primary",
+        "games": 12,
         "jsonFile": "english-vocab-easy",
         "resource": true
       },
       {
         "displayName": "Vocabulary (Medium)",
-        "bg": "warning",
+        "games": 12,
         "jsonFile": "english-vocab-medium",
         "resource": true
       },
       {
         "displayName": "Vocabulary (Hard)",
-        "bg": "turquoise",
+        "games": 12,
         "jsonFile": "english-vocab-hard",
         "resource": true
       }
@@ -139,7 +139,7 @@
   },
   {
     "displayName": "Music",
-    "icon": "quaver",
+    "icon": "quavers",
     "topics": [
       {
         "displayName": "Describing music",
@@ -181,7 +181,7 @@
   },
   {
     "displayName": "Physics",
-    "icon": "apple",
+    "icon": "light-bulb",
     "topics": [
       {
         "displayName": "Equations",
@@ -334,7 +334,7 @@
   },
   {
     "displayName": "Maths",
-    "icon": "percent",
+    "icon": "calculator",
     "topics": [
       {
         "displayName": "Trigonometric Exact Values",
@@ -345,7 +345,7 @@
   },
   {
     "displayName": "Economics",
-    "icon": "bank",
+    "icon": "coins",
     "topics": [
       {
         "displayName": "Economic foundations",

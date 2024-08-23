@@ -27,8 +27,8 @@
   <link href="style.css" rel="stylesheet">
 </head>
 
-<body style="overflow-y: hidden;">
-  <div class="flex_col main_wrapper">
+<body>
+  <div class="flex_col main_wrapper" style="overflow-y: hidden;">
     <section class="flex_col">
       <div style="flex-grow:1;margin:50px;">
         <div class="modal fade" id="games-modal" tabindex="-1">
@@ -66,7 +66,8 @@
                   <div class="card-body flex_col justify-content-between">
                     <div class="mb-1">Fill in the blank</div>
                     <small>Figure out which words go in the gaps in the incomplete quotation.</small>
-                    <button id="blank" class="rbtn rasper-green m-0 mt-3" onclick="startGame(this)">Begin</button>
+                    <button id="fill-in-the-blank" class="rbtn rasper-green m-0 mt-3"
+                      onclick="startGame(this)">Begin</button>
                   </div>
                 </div>
                 <div class="card text-bg-dark border-secondary game">
@@ -91,24 +92,7 @@
     var topic_chosen = null;
 
     function startGame(btn) {
-      console.log(btn.id)
-      switch (btn.id) {
-        case "matchup":
-          location.href = `/matchup/?json=${topic_chosen}`;
-          break;
-        case "quiz":
-          location.href = `/quiz/?json=${topic_chosen}`;
-          break;
-        case "blank":
-          location.href = `/fill-in-the-blank?json=${topic_chosen}`;
-          break;
-        case "equations":
-          location.href = '/equations?json=physics_equations.json';
-          break;
-        case "exam-questions":
-          location.href = `/exam-questions?json=${topic_chosen}`;
-          break;
-      }
+      location.href = `/${btn.id}/?json=${topic_chosen}`;
     }
 
     document.addEventListener("DOMContentLoaded", () => {
@@ -125,7 +109,7 @@
         data.forEach((subject, i) => {
           const subject_icon = document.createElement('img');
           subject_icon.classList.add('subject-icon');
-          subject_icon.src = `icons/${subject.icon}`;
+          subject_icon.src = `icons/${subject.icon}.svg`;
 
           const subject_btn = document.createElement('button');
           subject_btn.classList.add('subject-btn', 'w-100');
@@ -146,9 +130,7 @@
               const subject_content = document.createElement('div');
               subject_content.classList.add('w-100', 'px-1');
               subject_content.style.overflowY = 'hidden';
-              setInterval(() => {
-                subject_content.style.overflowY = 'auto';
-              }, 500)
+              setInterval(() => { subject_content.style.overflowY = 'auto' }, 500)
               subject_wrapper.appendChild(subject_content);
 
               var queue = [];
@@ -169,27 +151,42 @@
 
                 topic_btn.addEventListener('click', () => {
                   if (hasSubtopics) {
-                    subject_content.childNodes.forEach(child => child.remove());
-                    topic.topics.forEach((subtopic, k) => {
-                      const subtopic_btn = document.createElement('button');
-                      subtopic_btn.classList.add('topic-btn');
-                      subtopic_btn.textContent = subtopic.displayName;
-                      subtopic_btn.style.border = 'none';
-                      subtopic_btn.setAttribute('data-bs-toggle', 'modal');
-                      subtopic_btn.setAttribute('data-bs-target', '#gamesModal');
+                    subject_content.remove();
+                    setTimeout(() => {
+                      const subject_content = document.createElement('div');
+                      subject_content.classList.add('w-100', 'px-1');
+                      subject_content.style.overflowY = 'auto'
+                      subject_wrapper.appendChild(subject_content);
 
-                      subtopic_btn.addEventListener('click', () =>
-                        topic_chosen = topic.jsonFile
-                      );
+                      topic.topics.forEach((subtopic, k) => {
+                        const subtopic_btn = document.createElement('button');
+                        subtopic_btn.classList.add('topic-btn');
+                        subtopic_btn.textContent = subtopic.displayName;
+                        subtopic_btn.style.border = 'none';
 
-                      if (j != topic.topics.length - 1) {
+                        subtopic_btn.setAttribute('data-bs-toggle', 'modal');
+                        subtopic_btn.setAttribute('data-bs-target', '#games-modal');
+
+                        subtopic_btn.addEventListener('click', () => topic_chosen = subtopic.jsonFile);
+
                         subtopic_btn.style.borderBottom = '1px gray solid';
-                      }
 
-                      subject_content.appendChild(subtopic_btn);
-                    });
+                        subject_content.appendChild(subtopic_btn);
+                      });
+                      subject_content.children[subject_content.children.length - 1].style.borderBottom = 'none';
+                    }, 1)
                   } else {
                     topic_chosen = topic.jsonFile;
+
+                    var binaryGames = topic.games.toString(2).split('');
+                    while (binaryGames.length < 5) binaryGames.unshift('0');
+
+                    const cards = document.querySelector('.modal-body').children;
+
+                    binaryGames.forEach((game, index) => {
+                      if (game === '0') cards[index].classList.add('d-none');
+                      else cards[index].classList.remove('d-none');
+                    });
                   }
                 });
                 if (topic.resource) queue.push(topic_btn);
