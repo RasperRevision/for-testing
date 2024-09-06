@@ -1,6 +1,6 @@
 const html = `<header class="d-flex justify-content-between main_header align-items-center">
   <div class="p-0 ms-5">
-    <a href="/" aria-label="Home"><img height="70" src="wide_logo.png" aria-label="Rasper Revision Logo"></a>
+    <a href="/" aria-label="Home"><img height="70" src="/assets/logo/regular_logo_dark_no_text.svg" aria-label="Rasper Revision Logo"></a>
   </div>
   <ul class="nav h-100 d-none d-md-flex align-items-center">
     <li class="nav-item fs-5"><a style="display: inline !important" href="/create"
