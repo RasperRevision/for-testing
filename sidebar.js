@@ -1,4 +1,4 @@
-const html = `<header class="d-flex justify-content-between main_header align-items-center p-2">
+const html = `<header class="d-flex justify-content-between main_header align-items-center py-1">
   <div class="p-0 ms-5">
     <a href="/" aria-label="Home"><img height="70" src="/assets/logo/regular_logo_dark_no_text.svg" aria-label="Rasper Revision Logo"></a>
     <ul class="nav h-100 d-none d-md-flex align-items-center">
