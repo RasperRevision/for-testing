@@ -29,7 +29,7 @@ const html = `<header class="d-flex justify-content-between main_header align-it
         </svg>
       </button>
     </li>
-    <li>
+    <li class="ms-3">
     |
     </li>
     <li class="nav-item ms-3">
