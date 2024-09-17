@@ -370,8 +370,8 @@ body::-webkit-scrollbar {
   position: absolute;
   height: 60px;
   width: 60px;
-  top: 30px;
-  right: 30px;
+  top: 15px;
+  right: 15px;
   z-index: 10000;
   cursor: pointer;
   transform: scale(1.3);
