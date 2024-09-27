@@ -7,213 +7,48 @@
   <title>Rasper Revision</title>
 
   <!-- FAVICON -->
-  <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <link rel="icon" type="image/png" href="/assets/logo/icon_dark.svg">
 
   <!-- BOOTSTRAP STYLES -->
   <link href="bootstrap.min.css" rel="stylesheet">
 
   <!-- BOOTSTRAP SCRIPTS-->
   <script src="bootstrap.bundle.min.js" defer></script>
-  
-  <!-- BOOTSTRAP ICONS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
   <!-- STYLES -->
   <link href="style.css" rel="stylesheet">
 </head>
 
 <body>
-  <div class="flex_col main_wrapper" style="overflow-y: hidden;">
-    <section class="flex_col">
-      <div style="flex-grow:1;margin:50px;">
-        <div class="modal fade" id="games-modal" tabindex="-1">
-          <div class="modal-dialog modal-dialog-centered modal-xl">
-            <div class="modal-content dark">
-              <div class="modal-header border-secondary">
-                <h5 class="modal-title">Select an activity</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                  aria-label="Close"></button>
-              </div>
-              <div class="modal-body d-flex">
-                <div class="card text-bg-dark border-secondary game">
-                  <div class="card-body flex_col justify-content-between">
-                    <div class="mb-1">Exam Questions</div>
-                    <small>Exam questions from past papers by the major exam boards</small>
-                    <button id="exam-questions" class="rbtn rasper-green m-0 mt-3"
-                      onclick="startGame(this)">Begin</button>
-                  </div>
-                </div>
-                <div class="card text-bg-dark border-secondary game">
-                  <div class="card-body flex_col justify-content-between">
-                    <div class="mb-1">Matchup</div>
-                    <small>Match the questions to their answers and the questions to their definitions</small>
-                    <button id="matchup" class="rbtn rasper-green m-0 mt-3" onclick="startGame(this)">Begin</button>
-                  </div>
-                </div>
-                <div class="card text-bg-dark border-secondary game">
-                  <div class="card-body flex_col justify-content-between">
-                    <div class="mb-1">Quiz</div>
-                    <small>Multiple choice quiz where you select the correct answer from 4 options</small>
-                    <button id="quiz" class="rbtn rasper-green m-0 mt-3" onclick="startGame(this)">Begin</button>
-                  </div>
-                </div>
-                <div class="card text-bg-dark border-secondary game">
-                  <div class="card-body flex_col justify-content-between">
-                    <div class="mb-1">Fill in the blank</div>
-                    <small>Figure out which words go in the gaps in the incomplete quotation.</small>
-                    <button id="fill-in-the-blank" class="rbtn rasper-green m-0 mt-3"
-                      onclick="startGame(this)">Begin</button>
-                  </div>
-                </div>
-                <div class="card text-bg-dark border-secondary game">
-                  <div class="card-body flex_col justify-content-between">
-                    <div class="mb-1">Equations</div>
-                    <small>Try to recall the relationships between variables in these equations</small>
-                    <button id="equations" class="rbtn rasper-green m-0 mt-3" onclick="startGame(this)">Begin</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+  <div class="d-flex flex-column main_wrapper">
+    <div class="d-flex justify-content-center align-items-center" style="height: calc(100vh - 100px); width: 100vw;">
+      <div style="transform: translateY(-100px)" class="d-flex flex-column justify-content-center">
+        <img src="/assets/logo/wide_logo_dark.svg" class="d-block">
+        Free revision resources for GCSE students and teachers
+        <div class="d-flex justify-content-center">
+          <a class="rbtn rbtn-default text-decoration-none" href="/about">
+            About
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-caret-right-fill" viewBox="0 0 16 16" stroke="currentColor">
+              <path
+                d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+            </svg>
+          </a>
         </div>
-        <div class="subjects container"></div>
       </div>
-    </section>
+    </div>
   </div>
 
   <script src="sidebar.js"></script>
   <script>
-
-    var topic_chosen = null;
-
-    function startGame(btn) {
-      location.href = `/${btn.id}/?json=${topic_chosen}`;
+    async function getSubjectJSON() {
+      return await fetch('subjects.json');
     }
 
-    document.addEventListener("DOMContentLoaded", () => {
+    getSubjectJSON.then(response => response.json())
+      .then(data => {
 
-      createSubjectButtons();
-
-      async function createSubjectButtons() {
-        const data = await (await fetch('subjects.json')).json();
-
-        const col = document.createElement('div');
-        col.classList.add('home-col');
-        document.querySelector('.subjects').append(col);
-
-        data.forEach((subject, i) => {
-          const subject_icon = document.createElement('img');
-          subject_icon.classList.add('subject-icon');
-          subject_icon.src = `icons/${subject.icon}.svg`;
-
-          const subject_btn = document.createElement('button');
-          subject_btn.classList.add('subject-btn', 'w-100');
-          subject_btn.appendChild(subject_icon);
-          subject_btn.innerHTML += `<div class=d-inline>${subject.displayName}</div>`;
-
-          const subject_wrapper = document.createElement('div');
-          subject_wrapper.classList.add('subject-wrapper', i);
-          subject_wrapper.appendChild(subject_btn);
-
-          subject_btn.addEventListener('click', () => {
-            if (!subject_wrapper.classList.contains('lg')) {
-              col.childNodes.forEach(child => {
-                if (child != subject_wrapper) child.style.transform = 'translateX(-100vw)';
-              });
-              col.prepend(subject_wrapper);
-
-              const subject_content = document.createElement('div');
-              subject_content.classList.add('w-100', 'px-1');
-              subject_content.style.overflowY = 'hidden';
-              setInterval(() => { subject_content.style.overflowY = 'auto' }, 500)
-              subject_wrapper.appendChild(subject_content);
-
-              var queue = [];
-
-              subject.topics.forEach((topic, j) => {
-                const topic_btn = document.createElement('button');
-                topic_btn.classList.add('topic-btn');
-                topic_btn.textContent = topic.displayName;
-                topic_btn.style.border = 'none';
-
-                topic_btn.style.borderBottom = '1px gray solid';
-
-                if (topic.topics) var hasSubtopics = true;
-                else {
-                  topic_btn.setAttribute('data-bs-toggle', 'modal');
-                  topic_btn.setAttribute('data-bs-target', '#games-modal');
-                }
-
-                topic_btn.addEventListener('click', () => {
-                  if (hasSubtopics) {
-                    subject_content.remove();
-                    setTimeout(() => {
-                      const subject_content = document.createElement('div');
-                      subject_content.classList.add('w-100', 'px-1');
-                      subject_content.style.overflowY = 'auto'
-                      subject_wrapper.appendChild(subject_content);
-
-                      topic.topics.forEach((subtopic, k) => {
-                        const subtopic_btn = document.createElement('button');
-                        subtopic_btn.classList.add('topic-btn');
-                        subtopic_btn.textContent = subtopic.displayName;
-                        subtopic_btn.style.border = 'none';
-
-                        subtopic_btn.setAttribute('data-bs-toggle', 'modal');
-                        subtopic_btn.setAttribute('data-bs-target', '#games-modal');
-
-                        subtopic_btn.addEventListener('click', () => topic_chosen = subtopic.jsonFile);
-
-                        subtopic_btn.style.borderBottom = '1px gray solid';
-
-                        subject_content.appendChild(subtopic_btn);
-                      });
-                      subject_content.children[subject_content.children.length - 1].style.borderBottom = 'none';
-                    }, 1)
-                  } else {
-                    topic_chosen = topic.jsonFile;
-
-                    var binaryGames = topic.games.toString(2).split('');
-                    while (binaryGames.length < 5) binaryGames.unshift('0');
-
-                    const cards = document.querySelector('.modal-body').children;
-
-                    binaryGames.forEach((game, index) => {
-                      if (game === '0') cards[index].classList.add('d-none');
-                      else cards[index].classList.remove('d-none');
-                    });
-                  }
-                });
-                if (topic.resource) queue.push(topic_btn);
-                else subject_content.appendChild(topic_btn);
-              });
-
-              subject_content.children[subject_content.children.length - 1].style.borderBottom = 'none';
-
-              if (queue[0]) {
-                const resources_title = document.createElement('p');
-                resources_title.classList.add('mt-4', 'fs-6')
-                resources_title.textContent = 'Additional resources: ';
-                subject_content.append(resources_title);
-
-                queue.forEach(btn => subject_content.appendChild(btn));
-              }
-
-              subject_content.children[subject_content.children.length - 1].style.borderBottom = 'none';
-            } else {
-              col.insertBefore(subject_wrapper, col.children[parseInt(subject_wrapper.classList[1]) + 1]);
-              col.childNodes.forEach(child => { child.style.transform = '' });
-              subject_wrapper.childNodes.forEach(child => {
-                if (!child.classList.contains('subject-btn')) child.remove();
-              });
-            }
-            setTimeout(() => subject_wrapper.classList.toggle('lg'), 50);
-          });
-
-          col.appendChild(subject_wrapper);
-        });
-      }
-    }); 
+      });
   </script>
 
 </body>

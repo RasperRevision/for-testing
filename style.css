@@ -2,6 +2,7 @@
   --rasper-green: #00e78f;
   --rasper-medium-green: #00cd7e;
   --rasper-dark-green: #00b06d;
+  --rasper-blue: #10272B;
 }
 
 *,
@@ -11,7 +12,7 @@
 }
 
 body {
-  background: linear-gradient(35deg, rgb(18, 22, 26), rgb(45, 53, 64));
+  background: linear-gradient(35deg, #0C1926, #1F3D49);
   height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -21,13 +22,9 @@ body {
   scrollbar-width: none;
 }
 
-body::-webkit-scrollbar {
-  display: none;
-}
-
 .main_header {
   height: 100px;
-  background-color: #198c60;
+  background-color: var(--rasper-blue);
   padding-right: 120px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
 
@@ -64,8 +61,8 @@ body::-webkit-scrollbar {
 
 .rbtn {
   margin-inline: 0.5rem;
-  padding-block: 8px;
-  padding-inline: 11px;
+  padding-block: 7px;
+  padding-inline: 15px;
   border: none;
   font-size: 1rem;
   color: white;
@@ -76,6 +73,28 @@ body::-webkit-scrollbar {
 
 .rbtn:hover {
   filter: brightness(0.9);
+}
+
+.rbtn-default {
+  color: var(--rasper-green);
+  border: var(--rasper-green) 5px solid;
+  background-color: var(--rasper-blue);
+  transition: all 150ms ease;
+}
+
+.rbtn-default svg {
+  fill: var(--rasper-green);
+  stroke: var(--rasper-green);
+}
+
+.rbtn-default:hover {
+  background-color: var(--rasper-green);
+  color: var(--rasper-blue);
+}
+
+.rbtn-default:hover svg {
+  fill: var(--rasper-blue);
+  stroke: var(--rasper-blue);
 }
 
 .game {
