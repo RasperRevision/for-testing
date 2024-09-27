@@ -20,11 +20,12 @@
 </head>
 
 <body>
-  <div class="d-flex flex-column main_wrapper">
-    <div class="d-flex justify-content-center align-items-center" style="height: calc(100vh - 100px); width: 100vw;">
+  <div class="d-flex flex-column main_wrapper" style="overflow-x: hidden;">
+    <div class="d-flex justify-content-center align-items-center px-4"
+      style="height: calc(100vh - 100px); width: 100vw;">
       <div style="transform: translateY(-80px)" class="d-flex flex-column justify-content-center">
         <img src="/assets/logo/wide_logo_dark.svg" class="d-block">
-        Free revision resources for GCSE students and teachers
+        <h6 class="text-center">Free revision resources for GCSE students and teachers</h6>
         <div class="d-flex justify-content-center">
           <a class="rbtn rbtn-default text-decoration-none mt-5" href="/about">
             About
@@ -35,6 +36,22 @@
             </svg>
           </a>
         </div>
+      </div>
+    </div>
+    <div class="container">
+      <h1>Browse</h1>
+      <div class="row">
+        <div class="col-4">
+          <button class="btn text-white d-block" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            <h5 class="m-0">Subjects</h5>
+          </button>
+          <button class="btn text-white d-block" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            <h5 class="m-0">Activities</h5>
+          </button>
+        </div>
+        <div class="col-8">hello</div>
       </div>
     </div>
   </div>
