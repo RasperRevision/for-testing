@@ -23,7 +23,7 @@ body {
 }
 
 .main_header {
-  height: 100px;
+  height: 85px;
   background-color: var(--rasper-blue);
   padding-right: 120px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
