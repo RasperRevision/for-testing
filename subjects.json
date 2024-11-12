@@ -1,377 +1,516 @@
 [
-  {
-    "displayName": "Chemistry",
-    "icon": "beaker",
-    "topics": [
-      {
-        "displayName": "Atomic structure",
-        "jsonFile": "c1",
-        "games": 12
-      },
-      {
-        "displayName": "Structure and bonding",
-        "jsonFile": "c2",
-        "games": 12
-      },
-      {
-        "displayName": "Quantitative Chemistry",
-        "jsonFile": "c3-quantitative-chemistry",
-        "games": 12
-      },
-      {
-        "displayName": "Electrolysis",
-        "jsonFile": "chemistry-electrolysis",
-        "games": 12
-      },
-      {
-        "displayName": "Energy changes",
-        "jsonFile": "chemistry-energy-changes",
-        "games": 12
-      }
-    ]
-  },
-  {
-    "displayName": "Computer Science",
-    "icon": "motherboard",
-    "topics": [
-      {
-        "displayName": "Algorithms",
-        "jsonFile": "unit1",
-        "games": 12
-      },
-      {
-        "displayName": "Programming",
-        "jsonFile": "unit2",
-        "games": 12
-      },
-      {
-        "displayName": "Data representation",
-        "jsonFile": "unit3",
-        "games": 12
-      },
-      {
-        "displayName": "Computer systems",
-        "jsonFile": "unit4",
-        "games": 12
-      },
-      {
-        "displayName": "Computer networks",
-        "jsonFile": "unit5",
-        "games": 12
-      }
-    ]
-  },
-  {
-    "displayName": "Biology",
-    "icon": "magnifying-glass",
-    "topics": [
-      {
-        "displayName": "Cell biology",
-        "jsonFile": "b1",
-        "games": 12
-      },
-      {
-        "displayName": "Organisation",
-        "jsonFile": "b2-organisation",
-        "games": 12
-      },
-      {
-        "displayName": "Infection and response",
-        "jsonFile": "b3-infection-and-response",
-        "games": 12
-      },
-      {
-        "displayName": "Homeostasis and response",
-        "jsonFile": "homeostasis-and-response",
-        "games": 12
-      }
-    ]
-  },
-  {
-    "displayName": "History",
-    "icon": "hourglass",
-    "topics": [
-      {
-        "displayName": "Cold War",
-        "jsonFile": "cold_war",
-        "games": 14
-      },
-      {
-        "displayName": "Germany 1918-1939",
-        "jsonFile": "germany1918-1939",
-        "games": 12
-      }
-    ]
-  },
-  {
-    "displayName": "English",
-    "icon": "book",
-    "topics": [
-      {
-        "displayName": "Macbeth",
-        "jsonFile": "macbeth",
-        "games": 2
-      },
-      {
-        "displayName": "A Christmas Carol",
-        "jsonFile": "christmas_carol",
-        "games": 2
-      },
-      {
-        "displayName": "Vocabulary (Easy)",
-        "games": 12,
-        "jsonFile": "english-vocab-easy",
-        "resource": true
-      },
-      {
-        "displayName": "Vocabulary (Medium)",
-        "games": 12,
-        "jsonFile": "english-vocab-medium",
-        "resource": true
-      },
-      {
-        "displayName": "Vocabulary (Hard)",
-        "games": 12,
-        "jsonFile": "english-vocab-hard",
-        "resource": true
-      }
-    ]
-  },
-  {
-    "displayName": "Music",
-    "icon": "quavers",
-    "topics": [
-      {
-        "displayName": "Describing music",
-        "jsonFile": "describing_music",
-        "games": 12,
-        "resource": true
-      },
-      {
-        "displayName": "World Music",
-        "topics": [
-          {
-            "displayName": "Samba",
-            "jsonFile": "samba",
-            "games": 12
-          },
-          {
-            "displayName": "Calypso",
-            "jsonFile": "calypso",
-            "games": 12
-          }
-        ]
-      },
-      {
-        "displayName": "Film and Computer Game Music",
-        "topics": [
-          {
-            "displayName": "Film music",
-            "jsonFile": "film-music",
-            "games": 12
-          },
-          {
-            "displayName": "Computer game music",
-            "jsonFile": "video-game-music",
-            "games": 12
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "displayName": "Physics",
-    "icon": "light-bulb",
-    "topics": [
-      {
-        "displayName": "Equations",
-        "jsonFile": "physics_equations",
-        "games": 1,
-        "resource": true
-      },
-      {
-        "displayName": "Energy",
-        "jsonFile": "physics-energy",
-        "games": 28
-      },
-      {
-        "displayName": "Electricity",
-        "jsonFile": "physics-electricity",
-        "games": 28
-      },
-      {
-        "displayName": "Particle model of matter",
-        "jsonFile": "physics-particle-model",
-        "games": 12
-      }
-    ]
-  },
-  {
-    "displayName": "German",
-    "icon": "pretzel",
-    "topics": [
-      {
-        "displayName": "Acronyms",
-        "jsonFile": "acronyms",
-        "games": 12
-      },
-      {
-        "displayName": "Colours",
-        "jsonFile": "colours",
-        "games": 12
-      },
-      {
-        "displayName": "Common adjectives",
-        "jsonFile": "adjectives",
-        "games": 12
-      },
-      {
-        "displayName": "Common adverbs",
-        "jsonFile": "adverbs",
-        "games": 12
-      },
-      {
-        "displayName": "Common prepositions",
-        "jsonFile": "prepositions",
-        "games": 12
-      },
-      {
-        "displayName": "Common verbs",
-        "jsonFile": "verbs",
-        "games": 12
-      },
-      {
-        "displayName": "Cultural life",
-        "jsonFile": "cultural-life",
-        "games": 12
-      },
-      {
-        "displayName": "Daily life, food and drink",
-        "jsonFile": "daily-life-food-drink",
-        "games": 12
-      },
-      {
-        "displayName": "Dealing with problems",
-        "jsonFile": "problems",
-        "games": 12
-      },
-      {
-        "displayName": "Dialogue, messaging and social media",
-        "jsonFile": "dialogue-and-messaging",
-        "games": 12
-      },
-      {
-        "displayName": "Directions",
-        "jsonFile": "directions",
-        "games": 12
-      },
-      {
-        "displayName": "Dress and style",
-        "jsonFile": "dress-and-style",
-        "games": 12
-      },
-      {
-        "displayName": "Geography",
-        "jsonFile": "geography",
-        "games": 12
-      },
-      {
-        "displayName": "International and Global Dimension",
-        "jsonFile": "international-and-global-dimension",
-        "games": 12
-      },
-      {
-        "displayName": "Local Area, Holiday and Travel",
-        "jsonFile": "local-area-holiday-travel",
-        "games": 12
-      },
-      {
-        "displayName": "Numbers",
-        "jsonFile": "numbers",
-        "games": 12
-      },
-      {
-        "displayName": "Quantities and Measures",
-        "jsonFile": "quantities-and-measures",
-        "games": 12
-      },
-      {
-        "displayName": "Relations, Relationships, Personal and Physical Characteristics",
-        "jsonFile": "relations-relationships-personal-and-physical-characteristics",
-        "games": 12
-      },
-      {
-        "displayName": "School",
-        "jsonFile": "school",
-        "games": 12
-      },
-      {
-        "displayName": "Social conventions",
-        "jsonFile": "social-conventions",
-        "games": 12
-      },
-      {
-        "displayName": "Times, Days, Months and Seasons",
-        "jsonFile": "times-days-months-seasons",
-        "games": 12
-      },
-      {
-        "displayName": "Useful words and phrases",
-        "jsonFile": "useful-words-and-expressions",
-        "games": 12
-      },
-      {
-        "displayName": "Weather",
-        "jsonFile": "weather",
-        "games": 12
-      },
-      {
-        "displayName": "Work",
-        "jsonFile": "work",
-        "games": 12
-      }
-    ]
-  },
-  {
-    "displayName": "Maths",
-    "icon": "calculator",
-    "topics": [
-      {
-        "displayName": "Trigonometric Exact Values",
-        "jsonFile": "sohcahtoa_exact_values",
-        "games": 12
-      }
-    ]
-  },
-  {
-    "displayName": "Economics",
-    "icon": "coins",
-    "topics": [
-      {
-        "displayName": "Economic foundations",
-        "jsonFile": "economic-foundations",
-        "games": 12
-      },
-      {
-        "displayName": "Resource allocation",
-        "jsonFile": "resource-allocation",
-        "games": 12
-      },
-      {
-        "displayName": "How prices are determined",
-        "jsonFile": "how-prices-are-determined",
-        "games": 12
-      },
-      {
-        "displayName": "Production, costs, revenue and profit",
-        "jsonFile": "production-costs-revenue-profit",
-        "games": 12
-      },
-      {
-        "displayName": "How the economy works",
-        "jsonFile": "how-the-economy-works",
-        "games": 12
-      }
-    ]
-  }
+  [
+    "For revise:",
+    "0 is quiz",
+    "1 is exam questions",
+    "2 is fill in the blank",
+    "3 is unjumble",
+    "4 is equations",
+    "For learn:",
+    "5 is notes",
+    "6 is video"
+  ],
+  [
+    {
+      "displayName": "Chemistry",
+      "id": "chemstry",
+      "children": [
+        {
+          "displayName": "Atomic structure",
+          "id": "c1",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "Structure and bonding",
+          "id": "c2",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "Quantitative Chemistry",
+          "id": "c3-quantitative-chemistry",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "Electrolysis",
+          "id": "chemistry-electrolysis",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "Energy changes",
+          "id": "chemistry-energy-changes",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "Reactivity series",
+          "id": "chemistry-reactivity-series",
+          "revise": [
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "displayName": "Computer Science",
+      "id": "compsc",
+      "children": [
+        {
+          "displayName": "Algorithms",
+          "id": "unit1",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "Programming",
+          "id": "unit2",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "Data representation",
+          "id": "unit3",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "Computer systems",
+          "id": "unit4",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "Computer networks",
+          "id": "unit5",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "Cyber security",
+          "id": "computer-science-cyber-security",
+          "revise": [
+            0,
+            1
+          ]
+        },
+        {
+          "displayName": "Relational databases and SQL",
+          "id": "computer-science-databases",
+          "revise": [
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "displayName": "Biology",
+      "id": "bology",
+      "children": [
+        {
+          "displayName": "Cell biology",
+          "id": "b1",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "Organisation",
+          "id": "b2-organisation",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "Infection and response",
+          "id": "b3-infection-and-response",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "Homeostasis and response",
+          "id": "homeostasis-and-response",
+          "revise": [
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "displayName": "History",
+      "id": "hstory",
+      "children": [
+        {
+          "displayName": "Cold War",
+          "id": "cold_war",
+          "revise": [
+            0,
+            2
+          ]
+        },
+        {
+          "displayName": "Germany 1918-1939",
+          "id": "germany1918-1939",
+          "revise": [
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "displayName": "English",
+      "id": "englsh",
+      "children": [
+        {
+          "displayName": "Macbeth",
+          "id": "macbeth",
+          "revise": [
+            2
+          ]
+        },
+        {
+          "displayName": "A Christmas Carol",
+          "id": "christmas_carol",
+          "revise": [
+            2
+          ]
+        },
+        {
+          "displayName": "Power and Conflict anthology",
+          "id": "english-lit-power-and-conflict",
+          "revise": [
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "displayName": "Music",
+      "id": "musik",
+      "children": [
+        {
+          "displayName": "Describing music",
+          "id": "describing_music",
+          "revise": [
+            0
+          ],
+          "resource": true
+        },
+        {
+          "displayName": "World Music",
+          "children": [
+            {
+              "displayName": "Samba",
+              "id": "samba",
+              "revise": [
+                0
+              ]
+            },
+            {
+              "displayName": "Calypso",
+              "id": "calypso",
+              "revise": [
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "displayName": "Film and Computer Game Music",
+          "children": [
+            {
+              "displayName": "Film music",
+              "id": "film-music",
+              "revise": [
+                0
+              ]
+            },
+            {
+              "displayName": "Computer game music",
+              "id": "video-game-music",
+              "revise": [
+                0
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "displayName": "Physics",
+      "id": "physcs",
+      "children": [
+        {
+          "displayName": "Equations",
+          "id": "physics_equations",
+          "revise": [
+            4
+          ],
+          "resource": true
+        },
+        {
+          "displayName": "Energy",
+          "id": "physics-energy",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "Electricity",
+          "id": "physics-electricity",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "Particle model of matter",
+          "id": "physics-particle-model",
+          "revise": [
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "displayName": "German",
+      "id": "german",
+      "children": [
+        {
+          "displayName": "Acronyms",
+          "id": "acronyms",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "Colours",
+          "id": "colours",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "Common adjectives",
+          "id": "adjectives",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "Common adverbs",
+          "id": "adverbs",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "Common prepositions",
+          "id": "prepositions",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "Common verbs",
+          "id": "verbs",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "Cultural life",
+          "id": "cultural-life",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "Daily life, food and drink",
+          "id": "daily-life-food-drink",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "Dealing with problems",
+          "id": "problems",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "Dialogue, messaging and social media",
+          "id": "dialogue-and-messaging",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "Directions",
+          "id": "directions",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "Dress and style",
+          "id": "dress-and-style",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "Geography",
+          "id": "geography",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "International and Global Dimension",
+          "id": "international-and-global-dimension",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "Local Area, Holiday and Travel",
+          "id": "local-area-holiday-travel",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "Numbers",
+          "id": "numbers",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "Quantities and Measures",
+          "id": "quantities-and-measures",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "Relations, Relationships, Personal and Physical Characteristics",
+          "id": "relations-relationships-personal-and-physical-characteristics",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "School",
+          "id": "school",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "Social conventions",
+          "id": "social-conventions",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "Times, Days, Months and Seasons",
+          "id": "times-days-months-seasons",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "Useful words and phrases",
+          "id": "useful-words-and-expressions",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "Weather",
+          "id": "weather",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "Work",
+          "id": "work",
+          "revise": [
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "displayName": "Mathematics",
+      "id": "maths",
+      "children": [
+        {
+          "displayName": "Trigonometric Exact Values",
+          "id": "sohcahtoa_exact_values",
+          "revise": [
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "displayName": "Economics",
+      "id": "economcs",
+      "children": [
+        {
+          "displayName": "Economic foundations",
+          "id": "economic-foundations",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "Resource allocation",
+          "id": "resource-allocation",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "How prices are determined",
+          "id": "how-prices-are-determined",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "Production, costs, revenue and profit",
+          "id": "production-costs-revenue-profit",
+          "revise": [
+            0
+          ]
+        },
+        {
+          "displayName": "How the economy works",
+          "id": "how-the-economy-works",
+          "revise": [
+            0
+          ]
+        }
+      ]
+    }
+  ]
 ]

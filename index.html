@@ -13,27 +13,79 @@
   <link href="bootstrap.min.css" rel="stylesheet">
 
   <!-- BOOTSTRAP SCRIPTS-->
-  <script src="bootstrap.bundle.min.js" defer></script>
+  <script src="bootstrap.bundle.min.js"></script>
 
   <!-- STYLES -->
   <link href="style.css" rel="stylesheet">
+
+  <style>
+    .bi-caret-right-fill {
+      transition: rotate 210ms ease;
+    }
+
+    :not(.collapsed)>.bi-caret-right-fill {
+      rotate: 90deg;
+    }
+
+    .activity-card {
+      background-color: rgba(25, 28, 34, 0.2);
+      padding: 5px;
+      border-radius: 5px;
+      border: 2px rgba(0, 0, 0, 0.2) solid;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-block: 4px;
+    }
+
+    .game-circle {
+      width: 16px;
+      height: 16px;
+      border-radius: 100%;
+      background-color: rgba(88, 88, 88, 0.304);
+      display: inline-block;
+    }
+
+    .game-circle.quiz {
+      background-color: rgb(225, 255, 0);
+    }
+
+    .game-circle.exam {
+      background-color: rgb(8, 127, 87);
+    }
+
+    .game-circle.blank {
+      background-color: rgb(173, 114, 18);
+    }
+
+    .game-circle.unjumble {
+      background-color: rgb(8, 97, 127);
+    }
+
+    .game-circle.equations {
+      background-color: rgb(127, 8, 8);
+    }
+
+    .game-circle.notes {
+      background-color: rgb(36, 187, 200);
+    }
+
+    .game-circle.video {
+      background-color: rgb(99, 8, 127);
+    }
+  </style>
 </head>
 
 <body>
   <div class="d-flex flex-column main_wrapper" style="overflow-x: hidden;">
-    <div class="d-flex justify-content-center align-items-center px-4"
-      style="height: calc(100vh - 100px); width: 100vw;">
-      <div style="transform: translateY(-80px)" class="d-flex flex-column justify-content-center">
-        <img src="/assets/logo/wide_logo_dark.svg" class="d-block">
+    <div class="d-flex justify-content-center align-items-center px-4" style="width: 100vw;">
+      <div style="transform: translateY(-80px);height: 100vh;" class="d-flex flex-column justify-content-center">
+        <img src="/assets/logo/wide_logo_dark.svg" class="d-block mb-3">
         <h6 class="text-center">Free revision resources for GCSE students and teachers</h6>
         <div class="d-flex justify-content-center">
           <a class="rbtn rbtn-default text-decoration-none mt-5" href="/about" aria-label="About Rasper Revision">
             About
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-              class="bi bi-caret-right-fill" viewBox="0 0 16 16" stroke="currentColor">
-              <path
-                d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
-            </svg>
+            <svg width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" stroke="currentColor"></svg>
           </a>
         </div>
       </div>
@@ -41,31 +93,113 @@
     <div class="container">
       <h1>Browse</h1>
       <div class="row">
-        <div class="col-4">
-          <button class="btn text-white d-block" type="button" data-bs-toggle="collapse"
-            data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-            <h5 class="m-0">Subjects</h5>
+        <div class="col-3">
+          <button class="btn text-white w-100 d-flex align-items-center collapse-btn collapsed" type="button"
+            data-bs-toggle="collapse" data-bs-target="#subjectsCollapse" aria-expanded="false"
+            aria-controls="subjectsCollapse">
+            <svg width="16" height="16" class="bi bi-caret-right-fill me-2" fill="white"></svg>
+            <span class="fs-5">Subjects</span>
           </button>
-          <button class="btn text-white d-block" type="button" data-bs-toggle="collapse"
-            data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-            <h5 class="m-0">Activities</h5>
+          <div class="collapse" id="subjectsCollapse"></div>
+          <button class="btn text-white w-100 d-flex align-items-center collapse-btn collapsed" type="button"
+            data-bs-toggle="collapse" data-bs-target="#activitiesCollapse" aria-expanded="false"
+            aria-controls="activitiesCollapse">
+            <svg width="16" height="16" class="bi bi-caret-right-fill me-2" fill="white"></svg>
+            <span class="fs-5">Activities</span>
           </button>
+          <div class="collapse" id="activitiesCollapse"></div>
         </div>
-        <div class="col-8">hello</div>
+        <div class="col-9 activity-container"></div>
       </div>
     </div>
   </div>
 
   <script src="sidebar.js"></script>
-  <script>
-    async function getSubjectJSON() {
-      return await fetch('subjects.json');
+  <script src="bsicons.js"></script>
+  <script async>
+    const container = document.querySelector('.activity-container');
+
+    function numToGameId(n) {
+      switch (n) {
+        case 0: return 'quiz';
+        case 1: return 'exam';
+        case 2: return 'blank';
+        case 3: return 'unjumble';
+        case 4: return 'equations';
+        case 5: return 'notes';
+        case 6: return 'video';
+      }
     }
 
-    getSubjectJSON.then(response => response.json())
-      .then(data => {
+    function numToGameName(n) {
+      switch (n) {
+        case 0: return 'Quiz';
+        case 1: return 'Exam Questions';
+        case 2: return 'Fill in the blank';
+        case 3: return 'Unjumble';
+        case 4: return 'Equations';
+        case 5: return 'Notes';
+        case 6: return 'Video';
+      }
+    }
 
+    function createFilters(subjects) {
+      subjects.forEach(subject => {
+        const subjectBtn = document.createElement('button');
+        subjectBtn.textContent = subject.displayName;
+        subjectBtn.classList.add('btn', 'text-white', 'text-start', 'd-block')
+        document.getElementById('subjectsCollapse').append(subjectBtn);
+      })
+    }
+
+    async function showActivities() {
+      // fetches the json data for all subjects.
+      const json_data = await fetch('subjects.json');
+      const subjects = await json_data.json();
+
+      createFilters(subjects[1]);
+
+      subjects[1].forEach(subject => {
+        subject.children.forEach(topic => {
+          if (topic.children) topic.children.forEach(child => createActivityHTML(child, `${subject.displayName} > ${topic.displayName}`));
+          else createActivityHTML(topic, subject.displayName);
+        });
       });
+    }
+
+    function createActivityHTML(activityObj, parent) {
+      const activity = document.createElement('div');
+      activity.innerHTML = `<div class="p-1"><b>${activityObj.displayName}</b> <small>${parent}</small><div class="games ${activityObj.id}-games"></div></div><div><button class="rbtn rasper-green">Learn</button><button class="rbtn rasper-green">Revise</button></div>`;
+      activity.classList.add('activity-card');
+
+      container.append(activity);
+
+      if (activityObj.learn) {
+        activityObj.learn.forEach(game => {
+          const circle = document.createElement('div');
+          circle.classList.add('game-circle', numToGameId(game));
+          circle.setAttribute('data-bs-toggle', 'tooltip');
+          circle.setAttribute('data-bs-title', numToGameName(game));
+          document.querySelector(`.${activityObj.id}-games`).append(circle);
+        });
+        document.querySelector(`.${activityObj.id}-games`).append(document.createTextNode('|'));
+      }
+
+      if (activityObj.revise) {
+        activityObj.revise.forEach(game => {
+          const circle = document.createElement('div');
+          circle.classList.add('game-circle', numToGameId(game));
+          circle.setAttribute('data-bs-toggle', 'tooltip');
+          circle.setAttribute('data-bs-title', numToGameName(game));
+          document.querySelector(`.${activityObj.id}-games`).append(circle);
+        });
+      }
+
+      [...document.querySelectorAll('[data-bs-toggle="tooltip"]')].map(e => new bootstrap.Tooltip(e))
+    }
+
+    showActivities();
+
   </script>
 
 </body>
