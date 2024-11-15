@@ -141,6 +141,13 @@
           ]
         },
         {
+          "displayName": "Bioenergetics",
+          "id": "bioenergetics",
+          "revise": [
+            0
+          ]
+        },
+        {
           "displayName": "Homeostasis and response",
           "id": "homeostasis-and-response",
           "revise": [
