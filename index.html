@@ -19,23 +19,25 @@
   <link href="style.css" rel="stylesheet">
 
   <style>
-    .bi-caret-right-fill {
-      transition: rotate 210ms ease;
+    .collapse-icon {
+      transition: rotate 250ms ease;
     }
 
-    :not(.collapsed)>.bi-caret-right-fill {
+    :not(.collapsed)>.collapse-icon {
       rotate: 90deg;
     }
 
     .activity-card {
-      background-color: rgba(25, 28, 34, 0.2);
-      padding: 5px;
-      border-radius: 5px;
-      border: 2px rgba(0, 0, 0, 0.2) solid;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-block: 4px;
+    }
+
+    .activity-wrapper {
+      background-color: rgba(25, 28, 34, 0.2);
+      border: 2px rgba(0, 0, 0, 0.2) solid;
+      margin-block: 10px;
+      border-radius: 5px;
     }
 
     .game-circle {
@@ -50,11 +52,11 @@
       background-color: rgb(225, 255, 0);
     }
 
-    .game-circle.exam {
+    .game-circle.exam-questions {
       background-color: rgb(8, 127, 87);
     }
 
-    .game-circle.blank {
+    .game-circle.fill-in-the-blank {
       background-color: rgb(173, 114, 18);
     }
 
@@ -73,13 +75,20 @@
     .game-circle.video {
       background-color: rgb(99, 8, 127);
     }
+
+    .r-card {
+      background-color: #1c3038;
+      border-radius: 0.375rem;
+      padding: 1rem;
+      margin: 0.5rem;
+    }
   </style>
 </head>
 
 <body>
   <div class="d-flex flex-column main_wrapper" style="overflow-x: hidden;">
     <div class="d-flex justify-content-center align-items-center px-4" style="width: 100vw;">
-      <div style="transform: translateY(-80px);height: 100vh;" class="d-flex flex-column justify-content-center">
+      <div style="height: 100vh;" class="d-flex flex-column justify-content-center">
         <img src="/assets/logo/wide_logo_dark.svg" class="d-block mb-3">
         <h6 class="text-center">Free revision resources for GCSE students and teachers</h6>
         <div class="d-flex justify-content-center">
@@ -97,14 +106,14 @@
           <button class="btn text-white w-100 d-flex align-items-center collapse-btn collapsed" type="button"
             data-bs-toggle="collapse" data-bs-target="#subjectsCollapse" aria-expanded="false"
             aria-controls="subjectsCollapse">
-            <svg width="16" height="16" class="bi bi-caret-right-fill me-2" fill="white"></svg>
+            <svg width="16" height="16" class="bi bi-caret-right-fill collapse-icon me-2" fill="white"></svg>
             <span class="fs-5">Subjects</span>
           </button>
           <div class="collapse" id="subjectsCollapse"></div>
           <button class="btn text-white w-100 d-flex align-items-center collapse-btn collapsed" type="button"
             data-bs-toggle="collapse" data-bs-target="#activitiesCollapse" aria-expanded="false"
             aria-controls="activitiesCollapse">
-            <svg width="16" height="16" class="bi bi-caret-right-fill me-2" fill="white"></svg>
+            <svg width="16" height="16" class="bi bi-caret-right-fill collapse-icon me-2" fill="white"></svg>
             <span class="fs-5">Activities</span>
           </button>
           <div class="collapse" id="activitiesCollapse"></div>
@@ -122,8 +131,8 @@
     function numToGameId(n) {
       switch (n) {
         case 0: return 'quiz';
-        case 1: return 'exam';
-        case 2: return 'blank';
+        case 1: return 'exam-questions';
+        case 2: return 'fill-in-the-blank';
         case 3: return 'unjumble';
         case 4: return 'equations';
         case 5: return 'notes';
@@ -140,6 +149,18 @@
         case 4: return 'Equations';
         case 5: return 'Notes';
         case 6: return 'Video';
+      }
+    }
+
+    function numToGameDescription(n) {
+      switch (n) {
+        case 0: return 'Multiple choice quiz where you select the correct answer from 4 options.';
+        case 1: return 'Exam-style practice questions.';
+        case 2: return 'Figure out which words go in the gaps in the incomplete quotation.';
+        case 3: return 'Place things in the correct order.';
+        case 4: return 'Try to recall the relationships between variables in these equations';
+        case 5: return 'Revision notes.';
+        case 6: return 'Video.';
       }
     }
 
@@ -169,8 +190,8 @@
 
     function createActivityHTML(activityObj, parent) {
       const activity = document.createElement('div');
-      activity.innerHTML = `<div class="p-1"><b>${activityObj.displayName}</b> <small>${parent}</small><div class="games ${activityObj.id}-games"></div></div><div><button class="rbtn rasper-green">Learn</button><button class="rbtn rasper-green">Revise</button></div>`;
-      activity.classList.add('activity-card');
+      activity.innerHTML = `<div class="activity-card"><div class="p-2"><b>${activityObj.displayName}</b> <small>${parent}</small><div class="games ${activityObj.id}-games"></div></div><div><button class="rbtn rasper-green">Learn</button><button class="rbtn rasper-green" data-bs-toggle="collapse" data-bs-target="#${activityObj.id}-collapse">Revise</button></div></div><div class="collapse" id="${activityObj.id}-collapse"><div class="d-flex" id="${activityObj.id}-collapse-child"></div></div>`;
+      activity.classList.add('activity-wrapper');
 
       container.append(activity);
 
@@ -192,6 +213,13 @@
           circle.setAttribute('data-bs-toggle', 'tooltip');
           circle.setAttribute('data-bs-title', numToGameName(game));
           document.querySelector(`.${activityObj.id}-games`).append(circle);
+
+          const gameCard = document.createElement('div');
+          gameCard.classList.add('r-card', 'text-light', 'd-inline-flex');
+          gameCard.style.flexBasis = '100%';
+          gameCard.innerHTML = `<div class="card-body"><h5 class="card-title">${numToGameName(game)}</h5><p class="card-text">${numToGameDescription(game)}</p><button class="rbtn rasper-green m-0 w-100" onclick="location.href='/${numToGameId(game)}?json=${activityObj.id}'">Begin</button></div>`;
+
+          document.getElementById(`${activityObj.id}-collapse-child`).append(gameCard);
         });
       }
 
