@@ -14,89 +14,102 @@
     {
       "displayName": "Chemistry",
       "id": "chemstry",
+      "examBoard": "AQA",
       "children": [
         {
           "displayName": "Atomic structure",
           "id": "c1",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Structure and bonding",
           "id": "c2",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Quantitative Chemistry",
           "id": "c3-quantitative-chemistry",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Electrolysis",
           "id": "chemistry-electrolysis",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Energy changes",
           "id": "chemistry-energy-changes",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Reactivity series",
           "id": "chemistry-reactivity-series",
           "revise": [
             3
-          ]
+          ],
+          "type": "Resource"
         }
       ]
     },
     {
       "displayName": "Computer Science",
       "id": "compsc",
+      "examBoard": "AQA",
       "children": [
         {
           "displayName": "Algorithms",
           "id": "unit1",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Programming",
           "id": "unit2",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Data representation",
           "id": "unit3",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Computer systems",
           "id": "unit4",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Computer networks",
           "id": "unit5",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Cyber security",
@@ -104,61 +117,70 @@
           "revise": [
             0,
             1
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Relational databases and SQL",
           "id": "computer-science-databases",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         }
       ]
     },
     {
       "displayName": "Biology",
       "id": "bology",
+      "examBoard": "AQA",
       "children": [
         {
           "displayName": "Cell biology",
           "id": "b1",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Organisation",
           "id": "b2-organisation",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Infection and response",
           "id": "b3-infection-and-response",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Bioenergetics",
           "id": "bioenergetics",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Homeostasis and response",
           "id": "homeostasis-and-response",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         }
       ]
     },
     {
       "displayName": "History",
       "id": "hstory",
+      "examBoard": "Edexcel",
       "children": [
         {
           "displayName": "Cold War",
@@ -166,47 +188,54 @@
           "revise": [
             0,
             2
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Germany 1918-1939",
           "id": "germany1918-1939",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         }
       ]
     },
     {
       "displayName": "English",
       "id": "englsh",
+      "examBoard": "AQA",
       "children": [
         {
           "displayName": "Macbeth",
           "id": "macbeth",
           "revise": [
             2
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "A Christmas Carol",
           "id": "christmas_carol",
           "revise": [
             2
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Power and Conflict anthology",
           "id": "english-lit-power-and-conflict",
           "revise": [
             2
-          ]
+          ],
+          "type": "Topic"
         }
       ]
     },
     {
       "displayName": "Music",
       "id": "musik",
+      "examBoard": "OCR",
       "children": [
         {
           "displayName": "Describing music",
@@ -214,7 +243,7 @@
           "revise": [
             0
           ],
-          "resource": true
+          "type": "Resource"
         },
         {
           "displayName": "World Music",
@@ -224,14 +253,16 @@
               "id": "samba",
               "revise": [
                 0
-              ]
+              ],
+              "type": "Topic"
             },
             {
               "displayName": "Calypso",
               "id": "calypso",
               "revise": [
                 0
-              ]
+              ],
+              "type": "Topic"
             }
           ]
         },
@@ -243,14 +274,16 @@
               "id": "film-music",
               "revise": [
                 0
-              ]
+              ],
+              "type": "Topic"
             },
             {
               "displayName": "Computer game music",
               "id": "video-game-music",
               "revise": [
                 0
-              ]
+              ],
+              "type": "Topic"
             }
           ]
         }
@@ -259,6 +292,7 @@
     {
       "displayName": "Physics",
       "id": "physcs",
+      "examBoard": "AQA",
       "children": [
         {
           "displayName": "Equations",
@@ -266,256 +300,292 @@
           "revise": [
             4
           ],
-          "resource": true
+          "type": "Resource"
         },
         {
           "displayName": "Energy",
           "id": "physics-energy",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Electricity",
           "id": "physics-electricity",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Particle model of matter",
           "id": "physics-particle-model",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         }
       ]
     },
     {
       "displayName": "German",
       "id": "german",
+      "examBoard": "Edexcel",
       "children": [
         {
           "displayName": "Acronyms",
           "id": "acronyms",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Colours",
           "id": "colours",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Common adjectives",
           "id": "adjectives",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Common adverbs",
           "id": "adverbs",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Common prepositions",
           "id": "prepositions",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Common verbs",
           "id": "verbs",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Cultural life",
           "id": "cultural-life",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Daily life, food and drink",
           "id": "daily-life-food-drink",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Dealing with problems",
           "id": "problems",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Dialogue, messaging and social media",
           "id": "dialogue-and-messaging",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Directions",
           "id": "directions",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Dress and style",
           "id": "dress-and-style",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Geography",
           "id": "geography",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "International and Global Dimension",
           "id": "international-and-global-dimension",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Local Area, Holiday and Travel",
           "id": "local-area-holiday-travel",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Numbers",
           "id": "numbers",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Quantities and Measures",
           "id": "quantities-and-measures",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Relations, Relationships, Personal and Physical Characteristics",
           "id": "relations-relationships-personal-and-physical-characteristics",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "School",
           "id": "school",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Social conventions",
           "id": "social-conventions",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Times, Days, Months and Seasons",
           "id": "times-days-months-seasons",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Useful words and phrases",
           "id": "useful-words-and-expressions",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Weather",
           "id": "weather",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Work",
           "id": "work",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         }
       ]
     },
     {
       "displayName": "Mathematics",
       "id": "maths",
+      "examBoard": "Edexcel",
       "children": [
         {
           "displayName": "Trigonometric Exact Values",
           "id": "sohcahtoa_exact_values",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         }
       ]
     },
     {
       "displayName": "Economics",
       "id": "economcs",
+      "examBoard": "AQA",
       "children": [
         {
           "displayName": "Economic foundations",
           "id": "economic-foundations",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Resource allocation",
-          "id": "resource-allocation",
+          "id": "Resource-allocation",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "How prices are determined",
           "id": "how-prices-are-determined",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "Production, costs, revenue and profit",
           "id": "production-costs-revenue-profit",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         },
         {
           "displayName": "How the economy works",
           "id": "how-the-economy-works",
           "revise": [
             0
-          ]
+          ],
+          "type": "Topic"
         }
       ]
     }
