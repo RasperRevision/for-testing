@@ -44,8 +44,8 @@
     }
 
     .game-circle {
-      width: 1.5rem;
-      height: 1.5rem;
+      width: 24px;
+      height: 24px;
       border-radius: 100%;
       background-color: rgba(88, 88, 88, 0.304);
       display: inline-block;
@@ -265,6 +265,7 @@
           const icon = document.createElement('i');
           icon.classList.add('bi', numToIcon(game));
           icon.style.marginLeft = '4px';
+          icon.style.fontSize = '16px';
           circle.append(icon);
 
           const gameCard = document.createElement('div');
