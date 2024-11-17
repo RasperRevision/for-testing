@@ -183,9 +183,9 @@
             else activityTypeCounter[child.type] = 1;
           } else {
             child.children.forEach(grandchild => {
-            if (activityTypeCounter[grandchild.type]) activityTypeCounter[grandchild.type]++;
-            else activityTypeCounter[grandchild.type] = 1;
-            }
+              if (activityTypeCounter[grandchild.type]) activityTypeCounter[grandchild.type]++;
+              else activityTypeCounter[grandchild.type] = 1;
+            });
           }
         });
       });
