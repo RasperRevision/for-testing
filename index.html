@@ -13,7 +13,7 @@
   <link href="bootstrap.min.css" rel="stylesheet">
 
   <!-- BOOTSTRAP SCRIPTS-->
-  <script src="bootstrap.bundle.min.js"></script>
+  <script src="bootstrap.bundle.min.js" defer></script>
 
   <!-- STYLES -->
   <link href="style.css" rel="stylesheet">
@@ -112,28 +112,28 @@
           <button class="btn text-white w-100 d-flex align-items-center collapse-btn collapsed" type="button"
             data-bs-toggle="collapse" data-bs-target="#subjectsCollapse" aria-expanded="false"
             aria-controls="subjectsCollapse">
-            <svg width="16" height="16" class="bi bi-caret-right-fill collapse-icon me-2" fill="white"></svg>
+            <i style="font-size: 16px;" class="bi bi-caret-right-fill collapse-icon me-2 text-white"></i>
             <span class="fs-5">Subjects</span>
           </button>
           <div class="collapse" id="subjectsCollapse"></div>
           <button class="btn text-white w-100 d-flex align-items-center collapse-btn collapsed" type="button"
             data-bs-toggle="collapse" data-bs-target="#activitiesCollapse" aria-expanded="false"
             aria-controls="activitiesCollapse">
-            <svg width="16" height="16" class="bi bi-caret-right-fill collapse-icon me-2" fill="white"></svg>
+            <i style="font-size: 16px;" class="bi bi-caret-right-fill collapse-icon me-2 text-white"></i>
             <span class="fs-5">Activities</span>
           </button>
           <div class="collapse" id="activitiesCollapse"></div>
           <button class="btn text-white w-100 d-flex align-items-center collapse-btn collapsed" type="button"
             data-bs-toggle="collapse" data-bs-target="#examBoardsCollapse" aria-expanded="false"
             aria-controls="examBoardsCollapse">
-            <svg width="16" height="16" class="bi bi-caret-right-fill collapse-icon me-2" fill="white"></svg>
+            <i style="font-size: 16px;" class="bi bi-caret-right-fill collapse-icon me-2 text-white"></i>
             <span class="fs-5">Exam Boards</span>
           </button>
           <div class="collapse" id="examBoardsCollapse"></div>
           <button class="btn text-white w-100 d-flex align-items-center collapse-btn collapsed" type="button"
             data-bs-toggle="collapse" data-bs-target="#typeCollapse" aria-expanded="false"
             aria-controls="typeCollapse">
-            <svg width="16" height="16" class="bi bi-caret-right-fill collapse-icon me-2" fill="white"></svg>
+            <i style="font-size: 16px;" class="bi bi-caret-right-fill collapse-icon me-2 text-white"></i>
             <span class="fs-5">Type</span>
           </button>
           <div class="collapse" id="typeCollapse"></div>
@@ -144,7 +144,6 @@
   </div>
 
   <script src="sidebar.js"></script>
-  <script src="bsicons.js"></script>
   <script async>
     const container = document.querySelector('.activity-container');
 
