@@ -524,6 +524,14 @@
             0
           ],
           "type": "Topic"
+        },
+        {
+          "displayName": "Reading in German",
+          "id": "german-reading",
+          "revise": [
+            1
+          ],
+          "type": "Resource"
         }
       ]
     },

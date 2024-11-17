@@ -276,6 +276,10 @@ body {
   right: 15px;
 }
 
+#wrapper {
+  z-index: 5000;
+}
+
 #sidebar {
   position: fixed;
   top: 0;
@@ -287,6 +291,7 @@ body {
   -webkit-backdrop-filter: blur(20px);
   padding-top: 3.5rem;
   transition: all 0.3s;
+  overflow-y: scroll;
 }
 
 #sidebar.active {
@@ -386,7 +391,7 @@ body {
 }
 
 .hamburger-icon {
-  position: absolute;
+  position: fixed;
   height: 60px;
   width: 60px;
   top: 15px;

@@ -106,7 +106,10 @@
         <div class="d-flex justify-content-center">
           <a class="rbtn rbtn-default text-decoration-none mt-5" href="/about" aria-label="About Rasper Revision">
             About
-            <svg width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" stroke="currentColor"></svg>
+            <svg width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" stroke="currentColor">
+              <path
+                d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+            </svg>
           </a>
         </div>
       </div>
@@ -122,27 +125,27 @@
             <i style="font-size: 16px;" class="bi bi-caret-right-fill collapse-icon me-2 text-white"></i>
             <span class="fs-5">Subjects</span>
           </button>
-          <div class="collapse" id="subjectsCollapse"></div>
+          <div class="collapse ps-3" id="subjectsCollapse"></div>
           <button class="btn text-white w-100 d-flex align-items-center collapse-btn collapsed" type="button"
             data-bs-toggle="collapse" data-bs-target="#activitiesCollapse" aria-expanded="false"
             aria-controls="activitiesCollapse">
             <i style="font-size: 16px;" class="bi bi-caret-right-fill collapse-icon me-2 text-white"></i>
             <span class="fs-5">Activities</span>
           </button>
-          <div class="collapse" id="activitiesCollapse"></div>
+          <div class="collapse ps-3" id="activitiesCollapse"></div>
           <button class="btn text-white w-100 d-flex align-items-center collapse-btn collapsed" type="button"
             data-bs-toggle="collapse" data-bs-target="#examBoardsCollapse" aria-expanded="false"
             aria-controls="examBoardsCollapse">
             <i style="font-size: 16px;" class="bi bi-caret-right-fill collapse-icon me-2 text-white"></i>
             <span class="fs-5">Exam Boards</span>
           </button>
-          <div class="collapse" id="examBoardsCollapse"></div>
+          <div class="collapse ps-3" id="examBoardsCollapse"></div>
           <button class="btn text-white w-100 d-flex align-items-center collapse-btn collapsed" type="button"
             data-bs-toggle="collapse" data-bs-target="#typeCollapse" aria-expanded="false" aria-controls="typeCollapse">
             <i style="font-size: 16px;" class="bi bi-caret-right-fill collapse-icon me-2 text-white"></i>
             <span class="fs-5">Type</span>
           </button>
-          <div class="collapse" id="typeCollapse"></div>
+          <div class="collapse ps-3" id="typeCollapse"></div>
         </div>
         <div class="col-9 activity-container"></div>
       </div>
@@ -150,6 +153,7 @@
   </div>
 
   <script src="sidebar.js"></script>
+  <script src="footer.js"></script>
   <script async>
     const container = document.querySelector('.activity-container');
 
@@ -159,9 +163,19 @@
       const activityTypeCounter = {};
 
       subjects.forEach(subject => {
-        const subjectBtn = document.createElement('button');
-        subjectBtn.textContent = `${subject.displayName} (${subject.children.length})`;
-        subjectBtn.classList.add('btn', 'text-white', 'text-start', 'd-block')
+        const subjectBtn = document.createElement('div');
+        subjectBtn.classList.add('form-check');
+        subjectBtn.innerHTML = `<input class="form-check-input" type="checkbox" id="subjectBoxes${subject.id}" checked><label class="form-check-label" for="subjectBoxes${subject.id}">${subject.displayName} (${subject.children.length})</label>`;
+
+        subjectBtn.querySelector('.form-check-input').addEventListener('input', function () {
+          container.childNodes.forEach(child => {
+            if (child.querySelector('small').textContent.indexOf(subject.displayName) == 0) {
+              if (this.checked) child.classList.remove('d-none');
+              else child.classList.add('d-none');
+            }
+          });
+        });
+
         document.getElementById('subjectsCollapse').append(subjectBtn);
 
         subject.children.forEach(child => {
@@ -195,23 +209,53 @@
       });
 
       for (const [key, value] of Object.entries(activityCounter)) {
-        const activityBtn = document.createElement('button');
-        activityBtn.classList.add('btn', 'text-white', 'text-start', 'd-block')
-        activityBtn.textContent = `${numToGameName(parseInt(key))} (${value})`
+        const activityBtn = document.createElement('div');
+        activityBtn.classList.add('form-check')
+        activityBtn.innerHTML = `<input class="form-check-input" type="checkbox" id="activityBoxes${parseInt(key)}" checked><label class="form-check-label" for="activityBoxes${parseInt(key)}">${numToGameName(parseInt(key))} (${value})</label>`;
+
+        activityBtn.querySelector('.form-check-input').addEventListener('input', function () {
+          container.childNodes.forEach(child => {
+            if (child.querySelector(`.${numToGameId(parseInt(key))}`)) {
+              if (this.checked) child.classList.remove('d-none');
+              else child.classList.add('d-none');
+            }
+          });
+        });
+
         document.getElementById('activitiesCollapse').append(activityBtn);
       }
 
       for (const [key, value] of Object.entries(examBoardCounter)) {
-        const examBoardBtn = document.createElement('button');
-        examBoardBtn.classList.add('btn', 'text-white', 'text-start', 'd-block')
-        examBoardBtn.textContent = `${key} (${value})`
+        const examBoardBtn = document.createElement('div');
+        examBoardBtn.classList.add('form-check')
+        examBoardBtn.innerHTML = `<input class="form-check-input" type="checkbox" id="boardBoxes${key}" checked><label class="form-check-label" for="boardBoxes${key}">${key} (${value})</label>`;
+
+        examBoardBtn.querySelector('.form-check-input').addEventListener('input', function () {
+          container.childNodes.forEach(child => {
+            if (child.querySelector('span').textContent.indexOf(key) !== -1) {
+              if (this.checked) child.classList.remove('d-none');
+              else child.classList.add('d-none');
+            }
+          });
+        });
+
         document.getElementById('examBoardsCollapse').append(examBoardBtn);
       }
 
       for (const [key, value] of Object.entries(activityTypeCounter)) {
-        const typeBtn = document.createElement('button');
-        typeBtn.classList.add('btn', 'text-white', 'text-start', 'd-block')
-        typeBtn.textContent = `${key} (${value})`
+        const typeBtn = document.createElement('div');
+        typeBtn.classList.add('form-check')
+        typeBtn.innerHTML = `<input class="form-check-input" type="checkbox" id="typeBoxes${key}" checked><label class="form-check-label" for="typeBoxes${key}">${key} (${value})</label>`;
+
+        typeBtn.querySelector('.form-check-input').addEventListener('input', function () {
+          container.childNodes.forEach(child => {
+            if (child.querySelector('span').textContent.indexOf(key) !== -1) {
+              if (this.checked) child.classList.remove('d-none');
+              else child.classList.add('d-none');
+            }
+          });
+        });
+
         document.getElementById('typeCollapse').append(typeBtn);
       }
     }
@@ -281,7 +325,7 @@
 
     function createActivityHTML(activityObj, parentObj, parent) {
       const activity = document.createElement('div');
-      activity.innerHTML = `<div class="activity-card"><div class="p-3"><h5><b>${activityObj.displayName}</b> <small style="font-size: 1rem;">${parent}</small></h5><div class="d-flex align-items-center"><div class="games ${activityObj.id}-games d-flex align-items-center"></div><span class=ms-2>• ${activityObj.type} • ${parentObj.examBoard}</span></div></div><div><button class="rbtn rasper-green">Learn</button><button class="rbtn rasper-green" data-bs-toggle="collapse" data-bs-target="#${activityObj.id}-collapse">Revise</button></div></div><div class="collapse" id="${activityObj.id}-collapse"><div class="d-flex" id="${activityObj.id}-collapse-child"></div></div>`;
+      activity.innerHTML = `<div class="activity-card"><div class="p-3"><h5><b>${activityObj.displayName}</b> <small style="font-size: 1rem;">${parent}</small></h5><div class="d-flex align-items-center"><div class="games ${activityObj.id}-games d-flex align-items-center"></div><span class=ms-2>• ${activityObj.type} • ${parentObj.examBoard}</span></div></div><div><button class="btn btn-secondary disabled">Learn</button><button class="rbtn rasper-green" data-bs-toggle="collapse" data-bs-target="#${activityObj.id}-collapse">Revise</button></div></div><div class="collapse" id="${activityObj.id}-collapse"><div class="d-flex" id="${activityObj.id}-collapse-child"></div></div>`;
       activity.classList.add('activity-wrapper');
 
       container.append(activity);
