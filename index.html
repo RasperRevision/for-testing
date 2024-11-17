@@ -130,6 +130,13 @@
             <span class="fs-5">Exam Boards</span>
           </button>
           <div class="collapse" id="examBoardsCollapse">
+          <button class="btn text-white w-100 d-flex align-items-center collapse-btn collapsed" type="button"
+            data-bs-toggle="collapse" data-bs-target="#typeCollapse" aria-expanded="false"
+            aria-controls="typeCollapse">
+            <svg width="16" height="16" class="bi bi-caret-right-fill collapse-icon me-2" fill="white"></svg>
+            <span class="fs-5">Type</span>
+          </button>
+          <div class="collapse" id="typeCollapse">
           </div>
         </div>
         <div class="col-9 activity-container"></div>
@@ -145,6 +152,8 @@
     function createFilters(subjects) {
       const activityCounter = {};
       const examBoardCounter = {};
+      const activityTypeCounter = {};
+      
       subjects.forEach(subject => {
         const subjectBtn = document.createElement('button');
         subjectBtn.textContent = `${subject.displayName} (${subject.children.length})`;
@@ -165,8 +174,19 @@
               });
             })
           }
+          
           if (examBoardCounter[subject.examBoard]) examBoardCounter[subject.examBoard]++;
           else examBoardCounter[subject.examBoard] = 1;
+          
+          if (child.type) {
+            if (activityTypeCounter[child.type]) activityTypeCounter[child.type]++;
+            else activityTypeCounter[child.type] = 1;
+          } else {
+            child.children.forEach(grandchild => {
+            if (activityTypeCounter[grandchild.type]) activityTypeCounter[grandchild.type]++;
+            else activityTypeCounter[grandchild.type] = 1;
+            }
+          }
         });
       });
 
@@ -176,11 +196,19 @@
         activityBtn.textContent = `${numToGameName(parseInt(key))} (${value})`
         document.getElementById('activitiesCollapse').append(activityBtn);
       }
+      
       for (const [key, value] of Object.entries(examBoardCounter)) {
         const examBoardBtn = document.createElement('button');
         examBoardBtn.classList.add('btn', 'text-white', 'text-start', 'd-block')
         examBoardBtn.textContent = `${key} (${value})`
         document.getElementById('examBoardsCollapse').append(examBoardBtn);
+      }
+      
+      for (const [key, value] of Object.entries(activityTypeCounter)) {
+        const typeBtn = document.createElement('button');
+        typeBtn.classList.add('btn', 'text-white', 'text-start', 'd-block')
+        typeBtn.textContent = `${key} (${value})`
+        document.getElementById('typeCollapse').append(typeBtn);
       }
     }
 
@@ -265,7 +293,6 @@
           const icon = document.createElement('i');
           icon.classList.add('bi', numToIcon(game));
           icon.style.marginLeft = '4px';
-          icon.style.paddingTop = '8px';
           icon.style.fontSize = '16px';
           circle.append(icon);
 
