@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Free revision resources and games for GCSE students and teachers">
-  
+
   <title>Rasper Revision</title>
 
   <!-- FAVICON -->
@@ -87,6 +87,11 @@
       padding: 1rem;
       margin: 0.5rem;
     }
+
+    .activity-icon::before {
+      transform: translateY(1px);
+      vertical-align: 0 !important;
+    }
   </style>
 </head>
 
@@ -133,8 +138,7 @@
           </button>
           <div class="collapse" id="examBoardsCollapse"></div>
           <button class="btn text-white w-100 d-flex align-items-center collapse-btn collapsed" type="button"
-            data-bs-toggle="collapse" data-bs-target="#typeCollapse" aria-expanded="false"
-            aria-controls="typeCollapse">
+            data-bs-toggle="collapse" data-bs-target="#typeCollapse" aria-expanded="false" aria-controls="typeCollapse">
             <i style="font-size: 16px;" class="bi bi-caret-right-fill collapse-icon me-2 text-white"></i>
             <span class="fs-5">Type</span>
           </button>
@@ -153,7 +157,7 @@
       const activityCounter = {};
       const examBoardCounter = {};
       const activityTypeCounter = {};
-      
+
       subjects.forEach(subject => {
         const subjectBtn = document.createElement('button');
         subjectBtn.textContent = `${subject.displayName} (${subject.children.length})`;
@@ -174,10 +178,10 @@
               });
             })
           }
-          
+
           if (examBoardCounter[subject.examBoard]) examBoardCounter[subject.examBoard]++;
           else examBoardCounter[subject.examBoard] = 1;
-          
+
           if (child.type) {
             if (activityTypeCounter[child.type]) activityTypeCounter[child.type]++;
             else activityTypeCounter[child.type] = 1;
@@ -196,14 +200,14 @@
         activityBtn.textContent = `${numToGameName(parseInt(key))} (${value})`
         document.getElementById('activitiesCollapse').append(activityBtn);
       }
-      
+
       for (const [key, value] of Object.entries(examBoardCounter)) {
         const examBoardBtn = document.createElement('button');
         examBoardBtn.classList.add('btn', 'text-white', 'text-start', 'd-block')
         examBoardBtn.textContent = `${key} (${value})`
         document.getElementById('examBoardsCollapse').append(examBoardBtn);
       }
-      
+
       for (const [key, value] of Object.entries(activityTypeCounter)) {
         const typeBtn = document.createElement('button');
         typeBtn.classList.add('btn', 'text-white', 'text-start', 'd-block')
@@ -291,7 +295,7 @@
           document.querySelector(`.${activityObj.id}-games`).append(circle);
 
           const icon = document.createElement('i');
-          icon.classList.add('bi', numToIcon(game));
+          icon.classList.add('bi', numToIcon(game), 'activity-icon');
           icon.style.marginLeft = '4px';
           icon.style.fontSize = '16px';
           circle.append(icon);
