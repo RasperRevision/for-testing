@@ -151,6 +151,7 @@
   <script src="footer.js"></script>
   <script async>
     const container = document.querySelector('.activity-container');
+    const subjectCollapse = document.getElementById('subjectsCollapse');
 
     function createFilters(subjects) {
       const activityCounter = {};
@@ -160,15 +161,27 @@
       subjects.forEach(subject => {
         const subjectBtn = document.createElement('div');
         subjectBtn.classList.add('form-check');
-        subjectBtn.innerHTML = `<input class="form-check-input" type="checkbox" id="subjectBoxes${subject.id}" checked><label class="form-check-label" for="subjectBoxes${subject.id}">${subject.displayName} (${subject.children.length})</label>`;
+        subjectBtn.innerHTML = `<input class="form-check-input" type="checkbox" id="subjectBoxes${subject.id}"><label class="form-check-label" for="subjectBoxes${subject.id}">${subject.displayName} (${subject.children.length})</label>`;
 
         subjectBtn.querySelector('.form-check-input').addEventListener('input', function () {
-          container.childNodes.forEach(child => {
-            if (child.querySelector('small').textContent.indexOf(subject.displayName) == 0) {
-              if (this.checked) child.classList.remove('d-none');
+          const selectedSubjects = subjectCollapse.querySelectorAll('.form-check-input:checked');
+          if (selectedSubjects.length == 0) {
+            container.childNodes.forEach(child => child.classList.remove('d-none'));
+          } else {
+            container.childNodes.forEach(child => {
+              selectedSubjects.forEach(selectedSubject => {
+                const label = selectedSubject.parentElement.childNodes[1];
+                const selectedSubjectName = label.textContent.split(' (')[0];
+
+                if (child.querySelector('small').textContent.indexOf(selectedSubjectName) == 0) {
+                  containsLabel = true;
+                }
+              });
+
+              if (containsLabel) child.classList.remove('d-none');
               else child.classList.add('d-none');
-            }
-          });
+            });
+          }
         });
 
         document.getElementById('subjectsCollapse').append(subjectBtn);
@@ -206,7 +219,7 @@
       for (const [key, value] of Object.entries(activityCounter)) {
         const activityBtn = document.createElement('div');
         activityBtn.classList.add('form-check')
-        activityBtn.innerHTML = `<input class="form-check-input" type="checkbox" id="activityBoxes${parseInt(key)}" checked><label class="form-check-label" for="activityBoxes${parseInt(key)}">${numToGameName(parseInt(key))} (${value})</label>`;
+        activityBtn.innerHTML = `<input class="form-check-input" type="checkbox" id="activityBoxes${parseInt(key)}"><label class="form-check-label" for="activityBoxes${parseInt(key)}">${numToGameName(parseInt(key))} (${value})</label>`;
 
         activityBtn.querySelector('.form-check-input').addEventListener('input', function () {
           container.childNodes.forEach(child => {
@@ -223,7 +236,7 @@
       for (const [key, value] of Object.entries(examBoardCounter)) {
         const examBoardBtn = document.createElement('div');
         examBoardBtn.classList.add('form-check')
-        examBoardBtn.innerHTML = `<input class="form-check-input" type="checkbox" id="boardBoxes${key}" checked><label class="form-check-label" for="boardBoxes${key}">${key} (${value})</label>`;
+        examBoardBtn.innerHTML = `<input class="form-check-input" type="checkbox" id="boardBoxes${key}"><label class="form-check-label" for="boardBoxes${key}">${key} (${value})</label>`;
 
         examBoardBtn.querySelector('.form-check-input').addEventListener('input', function () {
           container.childNodes.forEach(child => {
@@ -240,7 +253,7 @@
       for (const [key, value] of Object.entries(activityTypeCounter)) {
         const typeBtn = document.createElement('div');
         typeBtn.classList.add('form-check')
-        typeBtn.innerHTML = `<input class="form-check-input" type="checkbox" id="typeBoxes${key}" checked><label class="form-check-label" for="typeBoxes${key}">${key} (${value})</label>`;
+        typeBtn.innerHTML = `<input class="form-check-input" type="checkbox" id="typeBoxes${key}"><label class="form-check-label" for="typeBoxes${key}">${key} (${value})</label>`;
 
         typeBtn.querySelector('.form-check-input').addEventListener('input', function () {
           container.childNodes.forEach(child => {
