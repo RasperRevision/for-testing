@@ -12,6 +12,53 @@
   ],
   [
     {
+      "displayName": "Biology",
+      "id": "bology",
+      "examBoard": "AQA",
+      "children": [
+        {
+          "displayName": "Cell biology",
+          "id": "b1",
+          "revise": [
+            0
+          ],
+          "type": "Topic"
+        },
+        {
+          "displayName": "Organisation",
+          "id": "b2-organisation",
+          "revise": [
+            0
+          ],
+          "type": "Topic"
+        },
+        {
+          "displayName": "Infection and response",
+          "id": "b3-infection-and-response",
+          "revise": [
+            0
+          ],
+          "type": "Topic"
+        },
+        {
+          "displayName": "Bioenergetics",
+          "id": "bioenergetics",
+          "revise": [
+            0
+          ],
+          "type": "Topic"
+        },
+        {
+          "displayName": "Homeostasis and response",
+          "id": "homeostasis-and-response",
+          "revise": [
+            0
+          ],
+          "type": "Topic"
+        }
+      ]
+    },
+    {
       "displayName": "Chemistry",
       "id": "chemstry",
       "examBoard": "AQA",
@@ -131,69 +178,45 @@
       ]
     },
     {
-      "displayName": "Biology",
-      "id": "bology",
+      "displayName": "Economics",
+      "id": "economcs",
       "examBoard": "AQA",
       "children": [
         {
-          "displayName": "Cell biology",
-          "id": "b1",
+          "displayName": "Economic foundations",
+          "id": "economic-foundations",
           "revise": [
             0
           ],
           "type": "Topic"
         },
         {
-          "displayName": "Organisation",
-          "id": "b2-organisation",
+          "displayName": "Resource allocation",
+          "id": "Resource-allocation",
           "revise": [
             0
           ],
           "type": "Topic"
         },
         {
-          "displayName": "Infection and response",
-          "id": "b3-infection-and-response",
+          "displayName": "How prices are determined",
+          "id": "how-prices-are-determined",
           "revise": [
             0
           ],
           "type": "Topic"
         },
         {
-          "displayName": "Bioenergetics",
-          "id": "bioenergetics",
+          "displayName": "Production, costs, revenue and profit",
+          "id": "production-costs-revenue-profit",
           "revise": [
             0
           ],
           "type": "Topic"
         },
         {
-          "displayName": "Homeostasis and response",
-          "id": "homeostasis-and-response",
-          "revise": [
-            0
-          ],
-          "type": "Topic"
-        }
-      ]
-    },
-    {
-      "displayName": "History",
-      "id": "hstory",
-      "examBoard": "Edexcel",
-      "children": [
-        {
-          "displayName": "Cold War",
-          "id": "cold_war",
-          "revise": [
-            0,
-            2
-          ],
-          "type": "Topic"
-        },
-        {
-          "displayName": "Germany 1918-1939",
-          "id": "germany1918-1939",
+          "displayName": "How the economy works",
+          "id": "how-the-economy-works",
           "revise": [
             0
           ],
@@ -227,102 +250,6 @@
           "id": "english-lit-power-and-conflict",
           "revise": [
             2
-          ],
-          "type": "Topic"
-        }
-      ]
-    },
-    {
-      "displayName": "Music",
-      "id": "musik",
-      "examBoard": "OCR",
-      "children": [
-        {
-          "displayName": "Describing music",
-          "id": "describing_music",
-          "revise": [
-            0
-          ],
-          "type": "Resource"
-        },
-        {
-          "displayName": "World Music",
-          "children": [
-            {
-              "displayName": "Samba",
-              "id": "samba",
-              "revise": [
-                0
-              ],
-              "type": "Topic"
-            },
-            {
-              "displayName": "Calypso",
-              "id": "calypso",
-              "revise": [
-                0
-              ],
-              "type": "Topic"
-            }
-          ]
-        },
-        {
-          "displayName": "Film and Computer Game Music",
-          "children": [
-            {
-              "displayName": "Film music",
-              "id": "film-music",
-              "revise": [
-                0
-              ],
-              "type": "Topic"
-            },
-            {
-              "displayName": "Computer game music",
-              "id": "video-game-music",
-              "revise": [
-                0
-              ],
-              "type": "Topic"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "displayName": "Physics",
-      "id": "physcs",
-      "examBoard": "AQA",
-      "children": [
-        {
-          "displayName": "Equations",
-          "id": "physics_equations",
-          "revise": [
-            4
-          ],
-          "type": "Resource"
-        },
-        {
-          "displayName": "Energy",
-          "id": "physics-energy",
-          "revise": [
-            0
-          ],
-          "type": "Topic"
-        },
-        {
-          "displayName": "Electricity",
-          "id": "physics-electricity",
-          "revise": [
-            0
-          ],
-          "type": "Topic"
-        },
-        {
-          "displayName": "Particle model of matter",
-          "id": "physics-particle-model",
-          "revise": [
-            0
           ],
           "type": "Topic"
         }
@@ -536,6 +463,30 @@
       ]
     },
     {
+      "displayName": "History",
+      "id": "hstory",
+      "examBoard": "Edexcel",
+      "children": [
+        {
+          "displayName": "Cold War",
+          "id": "cold_war",
+          "revise": [
+            0,
+            2
+          ],
+          "type": "Topic"
+        },
+        {
+          "displayName": "Germany 1918-1939",
+          "id": "germany1918-1939",
+          "revise": [
+            0
+          ],
+          "type": "Topic"
+        }
+      ]
+    },
+    {
       "displayName": "Mathematics",
       "id": "maths",
       "examBoard": "Edexcel",
@@ -551,45 +502,94 @@
       ]
     },
     {
-      "displayName": "Economics",
-      "id": "economcs",
+      "displayName": "Music",
+      "id": "musik",
+      "examBoard": "OCR",
+      "children": [
+        {
+          "displayName": "Describing music",
+          "id": "describing_music",
+          "revise": [
+            0
+          ],
+          "type": "Resource"
+        },
+        {
+          "displayName": "World Music",
+          "children": [
+            {
+              "displayName": "Samba",
+              "id": "samba",
+              "revise": [
+                0
+              ],
+              "type": "Topic"
+            },
+            {
+              "displayName": "Calypso",
+              "id": "calypso",
+              "revise": [
+                0
+              ],
+              "type": "Topic"
+            }
+          ]
+        },
+        {
+          "displayName": "Film and Computer Game Music",
+          "children": [
+            {
+              "displayName": "Film music",
+              "id": "film-music",
+              "revise": [
+                0
+              ],
+              "type": "Topic"
+            },
+            {
+              "displayName": "Computer game music",
+              "id": "video-game-music",
+              "revise": [
+                0
+              ],
+              "type": "Topic"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "displayName": "Physics",
+      "id": "physcs",
       "examBoard": "AQA",
       "children": [
         {
-          "displayName": "Economic foundations",
-          "id": "economic-foundations",
+          "displayName": "Equations",
+          "id": "physics_equations",
+          "revise": [
+            4
+          ],
+          "type": "Resource"
+        },
+        {
+          "displayName": "Energy",
+          "id": "physics-energy",
           "revise": [
             0
           ],
           "type": "Topic"
         },
         {
-          "displayName": "Resource allocation",
-          "id": "Resource-allocation",
+          "displayName": "Electricity",
+          "id": "physics-electricity",
           "revise": [
             0
           ],
           "type": "Topic"
         },
         {
-          "displayName": "How prices are determined",
-          "id": "how-prices-are-determined",
-          "revise": [
-            0
-          ],
-          "type": "Topic"
-        },
-        {
-          "displayName": "Production, costs, revenue and profit",
-          "id": "production-costs-revenue-profit",
-          "revise": [
-            0
-          ],
-          "type": "Topic"
-        },
-        {
-          "displayName": "How the economy works",
-          "id": "how-the-economy-works",
+          "displayName": "Particle model of matter",
+          "id": "physics-particle-model",
           "revise": [
             0
           ],

@@ -120,27 +120,27 @@
             <i style="font-size: 16px;" class="bi bi-caret-right-fill collapse-icon me-2 text-white"></i>
             <span class="fs-5">Subjects</span>
           </button>
-          <div class="collapse ps-3" id="subjectsCollapse"></div>
+          <div class="collapse ps-4" id="subjectsCollapse"></div>
           <button class="btn text-white w-100 d-flex align-items-center collapse-btn collapsed" type="button"
             data-bs-toggle="collapse" data-bs-target="#activitiesCollapse" aria-expanded="false"
             aria-controls="activitiesCollapse">
             <i style="font-size: 16px;" class="bi bi-caret-right-fill collapse-icon me-2 text-white"></i>
             <span class="fs-5">Activities</span>
           </button>
-          <div class="collapse ps-3" id="activitiesCollapse"></div>
+          <div class="collapse ps-4" id="activitiesCollapse"></div>
           <button class="btn text-white w-100 d-flex align-items-center collapse-btn collapsed" type="button"
             data-bs-toggle="collapse" data-bs-target="#examBoardsCollapse" aria-expanded="false"
             aria-controls="examBoardsCollapse">
             <i style="font-size: 16px;" class="bi bi-caret-right-fill collapse-icon me-2 text-white"></i>
             <span class="fs-5">Exam Boards</span>
           </button>
-          <div class="collapse ps-3" id="examBoardsCollapse"></div>
+          <div class="collapse ps-4" id="examBoardsCollapse"></div>
           <button class="btn text-white w-100 d-flex align-items-center collapse-btn collapsed" type="button"
             data-bs-toggle="collapse" data-bs-target="#typeCollapse" aria-expanded="false" aria-controls="typeCollapse">
             <i style="font-size: 16px;" class="bi bi-caret-right-fill collapse-icon me-2 text-white"></i>
             <span class="fs-5">Type</span>
           </button>
-          <div class="collapse ps-3" id="typeCollapse"></div>
+          <div class="collapse ps-4" id="typeCollapse"></div>
         </div>
         <div class="col-9 activity-container"></div>
       </div>
@@ -156,6 +156,51 @@
     const activityCollapse = document.getElementById('activitiesCollapse');
     const examBoardCollapse = document.getElementById('examBoardsCollapse');
     const typeCollapse = document.getElementById('typeCollapse');
+
+    const games = [
+      {
+        "id": "quiz",
+        "displayName": "Quiz",
+        "description": "Multiple choice quiz where you select the correct answer from 4 options.",
+        "icon": "bi-grid-fill"
+      },
+      {
+        "id": "exam-questions",
+        "displayName": "Exam Questions",
+        "description": "Exam-style practice questions.",
+        "icon": "bi-file-earmark-fill"
+      },
+      {
+        "id": "fill-in-the-blank",
+        "displayName": "Fill in the blank",
+        "description": "Figure out which words go in the gaps in the incomplete quotation.",
+        "icon": "bi-quote"
+      },
+      {
+        "id": "unjumble",
+        "displayName": "Unjumble",
+        "description": "Place things in the correct order.",
+        "icon": "bi-shuffle"
+      },
+      {
+        "id": "equations",
+        "displayName": "Equations",
+        "description": "Try to recall the relationships between variables in these equations",
+        "icon": "bi-percent"
+      },
+      {
+        "id": "notes",
+        "displayName": "Notes",
+        "description": "Revision notes.",
+        "icon": "bi-book-fill"
+      },
+      {
+        "id": "video",
+        "displayName": "Video",
+        "description": "Video.",
+        "icon": "bi-play-fill"
+      }
+    ]
 
     function createFilters(subjects) {
       const activityCounter = {};
@@ -224,7 +269,7 @@
       for (const [key, value] of Object.entries(activityCounter)) {
         const activityBtn = document.createElement('div');
         activityBtn.classList.add('form-check')
-        activityBtn.innerHTML = `<input class="form-check-input" type="checkbox" id="activityBoxes${parseInt(key)}"><label class="form-check-label" for="activityBoxes${parseInt(key)}">${numToGameName(parseInt(key))} (${value})</label>`;
+        activityBtn.innerHTML = `<input class="form-check-input" type="checkbox" id="activityBoxes${parseInt(key)}"><label class="form-check-label" for="activityBoxes${parseInt(key)}">${games[parseInt(key)].displayName} (${value})</label>`;
 
         activityBtn.querySelector('.form-check-input').addEventListener('input', function () {
           const selectedActivities = activityCollapse.querySelectorAll('.form-check-input:checked');
@@ -325,54 +370,6 @@
       }
     }
 
-    function numToGameId(n) {
-      switch (n) {
-        case 0: return 'quiz';
-        case 1: return 'exam-questions';
-        case 2: return 'fill-in-the-blank';
-        case 3: return 'unjumble';
-        case 4: return 'equations';
-        case 5: return 'notes';
-        case 6: return 'video';
-      }
-    }
-
-    function numToGameName(n) {
-      switch (n) {
-        case 0: return 'Quiz';
-        case 1: return 'Exam Questions';
-        case 2: return 'Fill in the blank';
-        case 3: return 'Unjumble';
-        case 4: return 'Equations';
-        case 5: return 'Notes';
-        case 6: return 'Video';
-      }
-    }
-
-    function numToGameDescription(n) {
-      switch (n) {
-        case 0: return 'Multiple choice quiz where you select the correct answer from 4 options.';
-        case 1: return 'Exam-style practice questions.';
-        case 2: return 'Figure out which words go in the gaps in the incomplete quotation.';
-        case 3: return 'Place things in the correct order.';
-        case 4: return 'Try to recall the relationships between variables in these equations';
-        case 5: return 'Revision notes.';
-        case 6: return 'Video.';
-      }
-    }
-
-    function numToIcon(n) {
-      switch (n) {
-        case 0: return 'bi-grid-fill';
-        case 1: return 'bi-file-earmark-fill';
-        case 2: return 'bi-quote';
-        case 3: return 'bi-shuffle';
-        case 4: return 'bi-percent';
-        case 5: return 'bi-book-fill';
-        case 6: return 'bi-play-fill';
-      }
-    }
-
     async function showActivities() {
       // fetches the json data for all subjects.
       const json_data = await fetch('subjects.json');
@@ -398,13 +395,13 @@
       if (activityObj.revise) {
         activityObj.revise.forEach(game => {
           const circle = document.createElement('div');
-          circle.classList.add('game-circle', numToGameId(game));
+          circle.classList.add('game-circle', games[game].id);
           circle.setAttribute('data-bs-toggle', 'tooltip');
-          circle.setAttribute('data-bs-title', numToGameName(game));
+          circle.setAttribute('data-bs-title', games[game].displayName);
           document.querySelector(`.${activityObj.id}-games`).append(circle);
 
           const icon = document.createElement('i');
-          icon.classList.add('bi', numToIcon(game), 'activity-icon');
+          icon.classList.add('bi', games[game].icon, 'activity-icon');
           icon.style.marginLeft = '4px';
           icon.style.fontSize = '16px';
           circle.append(icon);
@@ -412,7 +409,7 @@
           const gameCard = document.createElement('div');
           gameCard.classList.add('r-card', 'text-light', 'd-inline-flex');
           gameCard.style.flexBasis = '100%';
-          gameCard.innerHTML = `<div class="card-body d-flex flex-column h-100 justify-content-between"><div><h5 class="card-title"><i class="bi ${numToIcon(game)}"></i> ${numToGameName(game)}</h5><p class="card-text">${numToGameDescription(game)}</p></div><button class="rbtn rasper-green m-0 w-100 mt-3" onclick="location.href='/${numToGameId(game)}?json=${activityObj.id}'">Begin</button></div>`;
+          gameCard.innerHTML = `<div class="card-body d-flex flex-column h-100 justify-content-between"><div><h5 class="card-title"><i class="bi ${games[game].icon}"></i> ${games[game].displayName}</h5><p class="card-text">${games[game].description}</p></div><button class="rbtn rasper-green m-0 w-100 mt-3" onclick="location.href='/${games[game].id}?json=${activityObj.id}'">Begin</button></div>`;
 
           document.getElementById(`${activityObj.id}-collapse-child`).append(gameCard);
         });
