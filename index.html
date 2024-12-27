@@ -142,7 +142,10 @@
           </button>
           <div class="collapse ps-4" id="typeCollapse"></div>
         </div>
-        <div class="col-9 activity-container"></div>
+        <div class="col-9">
+          <p class="d-none no-results">Your search returned no results.</p>
+          <div class="activity-container"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -202,6 +205,72 @@
       }
     ]
 
+    function filterActivities() {
+      const selectedSubjects = subjectCollapse.querySelectorAll('.form-check-input:checked');
+      const selectedActivities = activityCollapse.querySelectorAll('.form-check-input:checked');
+      const selectedExamBoards = examBoardCollapse.querySelectorAll('.form-check-input:checked');
+      const selectedTypes = typeCollapse.querySelectorAll('.form-check-input:checked');
+
+      container.childNodes.forEach(child => {
+        const matchesConditions = [
+          false, // subject
+          false, // activity
+          false, // exam board
+          false // type
+        ];
+
+        if (selectedSubjects.length === 0) matchesConditions[0] = true;
+        else {
+          selectedSubjects.forEach(selectedSubject => {
+            const label = selectedSubject.parentElement.childNodes[1];
+            const selectedSubjectName = label.textContent.split(' (')[0];
+            const childLabel = child.querySelector('small');
+
+            if (childLabel.textContent.indexOf(selectedSubjectName) === 0) matchesConditions[0] = true;
+          });
+        }
+
+        if (selectedActivities.length === 0) matchesConditions[1] = true;
+        else {
+          selectedActivities.forEach(selectedActivity => {
+            const label = selectedActivity.parentElement.childNodes[1];
+            const selectedActivityName = label.textContent.split(' (')[0];
+
+            if (child.querySelector(`.${nameToGameId(selectedActivityName)}`)) matchesConditions[1] = true;
+          });
+        }
+
+        if (selectedExamBoards.length === 0) matchesConditions[2] = true;
+        else {
+          selectedExamBoards.forEach(selectedBoard => {
+            const label = selectedBoard.parentElement.childNodes[1];
+            const selectedBoardName = label.textContent.split(' (')[0];
+
+            if (child.querySelector('span').textContent.indexOf(selectedBoardName) !== -1) matchesConditions[2] = true;
+          });
+        }
+
+        if (selectedTypes.length === 0) matchesConditions[3] = true;
+        else {
+          selectedTypes.forEach(selectedType => {
+            const label = selectedType.parentElement.childNodes[1];
+            const selectedTypeName = label.textContent.split(' (')[0];
+            if (child.querySelector('span').textContent.indexOf(selectedTypeName) !== -1) matchesConditions[3] = true;
+          });
+        }
+
+        console.log(matchesConditions);
+        if (matchesConditions.every(Boolean)) child.classList.remove('d-none');
+        else child.classList.add('d-none');
+      });
+
+      if ([...container.children].every(x => x.classList.contains('d-none'))) {
+        document.querySelector('.no-results').classList.remove('d-none');
+      } else {
+        document.querySelector('.no-results').classList.add('d-none');
+      }
+    }
+
     function createFilters(subjects) {
       const activityCounter = {};
       const examBoardCounter = {};
@@ -209,30 +278,10 @@
 
       subjects.forEach(subject => {
         const subjectBtn = document.createElement('div');
+
         subjectBtn.classList.add('form-check');
         subjectBtn.innerHTML = `<input class="form-check-input" type="checkbox" id="subjectBoxes${subject.id}"><label class="form-check-label" for="subjectBoxes${subject.id}">${subject.displayName} (${subject.children.length})</label>`;
-
-        subjectBtn.querySelector('.form-check-input').addEventListener('input', function () {
-          const selectedSubjects = subjectCollapse.querySelectorAll('.form-check-input:checked');
-
-          if (selectedSubjects.length === 0) {
-            container.childNodes.forEach(child => child.classList.remove('d-none'));
-          } else {
-            container.childNodes.forEach(child => {
-              let containsLabel;
-              selectedSubjects.forEach(selectedSubject => {
-                const label = selectedSubject.parentElement.childNodes[1];
-                const selectedSubjectName = label.textContent.split(' (')[0];
-                const childLabel = child.querySelector('small');
-
-                if (childLabel.textContent.indexOf(selectedSubjectName) === 0) containsLabel = true;
-              });
-
-              if (containsLabel) child.classList.remove('d-none');
-              else child.classList.add('d-none');
-            });
-          }
-        });
+        subjectBtn.querySelector('.form-check-input').addEventListener('input', filterActivities);
 
         document.getElementById('subjectsCollapse').append(subjectBtn);
 
@@ -271,28 +320,7 @@
         activityBtn.classList.add('form-check')
         activityBtn.innerHTML = `<input class="form-check-input" type="checkbox" id="activityBoxes${parseInt(key)}"><label class="form-check-label" for="activityBoxes${parseInt(key)}">${games[parseInt(key)].displayName} (${value})</label>`;
 
-        activityBtn.querySelector('.form-check-input').addEventListener('input', function () {
-          const selectedActivities = activityCollapse.querySelectorAll('.form-check-input:checked');
-
-          if (selectedActivities.length === 0) {
-            container.childNodes.forEach(child => child.classList.remove('d-none'));
-            return;
-          }
-
-          container.childNodes.forEach(child => {
-            let containsLabel;
-            selectedActivities.forEach(selectedActivity => {
-              const label = selectedActivity.parentElement.childNodes[1];
-              const selectedActivityName = label.textContent.split(' (')[0];
-
-              if (child.querySelector(`.${nameToGameId(selectedActivityName)}`)) containsLabel = true;
-            });
-
-            if (containsLabel) child.classList.remove('d-none');
-            else child.classList.add('d-none');
-          });
-
-        });
+        activityBtn.querySelector('.form-check-input').addEventListener('input', filterActivities);
 
         document.getElementById('activitiesCollapse').append(activityBtn);
       }
@@ -302,27 +330,7 @@
         examBoardBtn.classList.add('form-check')
         examBoardBtn.innerHTML = `<input class="form-check-input" type="checkbox" id="boardBoxes${key}"><label class="form-check-label" for="boardBoxes${key}">${key} (${value})</label>`;
 
-        examBoardBtn.querySelector('.form-check-input').addEventListener('input', function () {
-          const selectedBoards = examBoardCollapse.querySelectorAll('.form-check-input:checked');
-
-          if (selectedBoards.length === 0) {
-            container.childNodes.forEach(child => child.classList.remove('d-none'));
-            return;
-          }
-
-          container.childNodes.forEach(child => {
-            let containsLabel;
-            selectedBoards.forEach(selectedBoard => {
-              const label = selectedBoard.parentElement.childNodes[1];
-              const selectedBoardName = label.textContent.split(' (')[0];
-
-              if (child.querySelector('span').textContent.indexOf(selectedBoardName) !== -1) containsLabel = true;
-            });
-
-            if (containsLabel) child.classList.remove('d-none');
-            else child.classList.add('d-none');
-          });
-        });
+        examBoardBtn.querySelector('.form-check-input').addEventListener('input', filterActivities);
 
         document.getElementById('examBoardsCollapse').append(examBoardBtn);
       }
@@ -332,27 +340,7 @@
         typeBtn.classList.add('form-check')
         typeBtn.innerHTML = `<input class="form-check-input" type="checkbox" id="typeBoxes${key}"><label class="form-check-label" for="typeBoxes${key}">${key} (${value})</label>`;
 
-        typeBtn.querySelector('.form-check-input').addEventListener('input', function () {
-          const selectedTypes = typeCollapse.querySelectorAll('.form-check-input:checked');
-
-          if (selectedTypes.length === 0) {
-            container.childNodes.forEach(child => child.classList.remove('d-none'));
-            return;
-          }
-
-          container.childNodes.forEach(child => {
-            let containsLabel;
-
-            selectedTypes.forEach(selectedType => {
-              const label = selectedType.parentElement.childNodes[1];
-              const selectedTypeName = label.textContent.split(' (')[0];
-              if (child.querySelector('span').textContent.indexOf(selectedTypeName) !== -1) containsLabel = true;
-            });
-
-            if (containsLabel) child.classList.remove('d-none');
-            else child.classList.add('d-none');
-          });
-        });
+        typeBtn.querySelector('.form-check-input').addEventListener('input', filterActivities);
 
         document.getElementById('typeCollapse').append(typeBtn);
       }
