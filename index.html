@@ -205,71 +205,7 @@
       }
     ]
 
-    function filterActivities() {
-      const selectedSubjects = subjectCollapse.querySelectorAll('.form-check-input:checked');
-      const selectedActivities = activityCollapse.querySelectorAll('.form-check-input:checked');
-      const selectedExamBoards = examBoardCollapse.querySelectorAll('.form-check-input:checked');
-      const selectedTypes = typeCollapse.querySelectorAll('.form-check-input:checked');
-
-      container.childNodes.forEach(child => {
-        const matchesConditions = [
-          false, // subject
-          false, // activity
-          false, // exam board
-          false // type
-        ];
-
-        if (selectedSubjects.length === 0) matchesConditions[0] = true;
-        else {
-          selectedSubjects.forEach(selectedSubject => {
-            const label = selectedSubject.parentElement.childNodes[1];
-            const selectedSubjectName = label.textContent.split(' (')[0];
-            const childLabel = child.querySelector('small');
-
-            if (childLabel.textContent.indexOf(selectedSubjectName) === 0) matchesConditions[0] = true;
-          });
-        }
-
-        if (selectedActivities.length === 0) matchesConditions[1] = true;
-        else {
-          selectedActivities.forEach(selectedActivity => {
-            const label = selectedActivity.parentElement.childNodes[1];
-            const selectedActivityName = label.textContent.split(' (')[0];
-
-            if (child.querySelector(`.${nameToGameId(selectedActivityName)}`)) matchesConditions[1] = true;
-          });
-        }
-
-        if (selectedExamBoards.length === 0) matchesConditions[2] = true;
-        else {
-          selectedExamBoards.forEach(selectedBoard => {
-            const label = selectedBoard.parentElement.childNodes[1];
-            const selectedBoardName = label.textContent.split(' (')[0];
-
-            if (child.querySelector('span').textContent.indexOf(selectedBoardName) !== -1) matchesConditions[2] = true;
-          });
-        }
-
-        if (selectedTypes.length === 0) matchesConditions[3] = true;
-        else {
-          selectedTypes.forEach(selectedType => {
-            const label = selectedType.parentElement.childNodes[1];
-            const selectedTypeName = label.textContent.split(' (')[0];
-            if (child.querySelector('span').textContent.indexOf(selectedTypeName) !== -1) matchesConditions[3] = true;
-          });
-        }
-
-        console.log(matchesConditions);
-        if (matchesConditions.every(Boolean)) child.classList.remove('d-none');
-        else child.classList.add('d-none');
-      });
-
-      if ([...container.children].every(x => x.classList.contains('d-none'))) {
-        document.querySelector('.no-results').classList.remove('d-none');
-      } else {
-        document.querySelector('.no-results').classList.add('d-none');
-      }
-    }
+    showActivities();
 
     function createFilters(subjects) {
       const activityCounter = {};
@@ -363,14 +299,21 @@
       const json_data = await fetch('subjects.json');
       const subjects = await json_data.json();
 
+      // appends check boxes to the filter menu on the left
       createFilters(subjects[1]);
 
+      // runs createActivityHTML() for each topic
       subjects[1].forEach(subject => {
         subject.children.forEach(topic => {
-          if (topic.children) topic.children.forEach(child => createActivityHTML(child, subject, `${subject.displayName} > ${topic.displayName}`));
-          else createActivityHTML(topic, subject, subject.displayName);
+          if (!topic.children) {
+            createActivityHTML(topic, subject, subject.displayName);
+            return;
+          }
+          topic.children.forEach(child => createActivityHTML(child, subject, `${subject.displayName} > ${topic.displayName}`));
         });
       });
+
+      [...document.querySelectorAll('[data-bs-toggle="tooltip"]')].map(e => new bootstrap.Tooltip(e))
     }
 
     function createActivityHTML(activityObj, parentObj, parent) {
@@ -380,33 +323,95 @@
 
       container.append(activity);
 
-      if (activityObj.revise) {
-        activityObj.revise.forEach(game => {
-          const circle = document.createElement('div');
-          circle.classList.add('game-circle', games[game].id);
-          circle.setAttribute('data-bs-toggle', 'tooltip');
-          circle.setAttribute('data-bs-title', games[game].displayName);
-          document.querySelector(`.${activityObj.id}-games`).append(circle);
+      if (!activityObj.revise) return;
 
-          const icon = document.createElement('i');
-          icon.classList.add('bi', games[game].icon, 'activity-icon');
-          icon.style.marginLeft = '4px';
-          icon.style.fontSize = '16px';
-          circle.append(icon);
+      activityObj.revise.forEach(game => {
+        const circle = document.createElement('div');
+        circle.classList.add('game-circle', games[game].id);
+        circle.setAttribute('data-bs-toggle', 'tooltip');
+        circle.setAttribute('data-bs-title', games[game].displayName);
+        document.querySelector(`.${activityObj.id}-games`).append(circle);
 
-          const gameCard = document.createElement('div');
-          gameCard.classList.add('r-card', 'text-light', 'd-inline-flex');
-          gameCard.style.flexBasis = '100%';
-          gameCard.innerHTML = `<div class="card-body d-flex flex-column h-100 justify-content-between"><div><h5 class="card-title"><i class="bi ${games[game].icon}"></i> ${games[game].displayName}</h5><p class="card-text">${games[game].description}</p></div><button class="rbtn rasper-green m-0 w-100 mt-3" onclick="location.href='/${games[game].id}?json=${activityObj.id}'">Begin</button></div>`;
+        const icon = document.createElement('i');
+        icon.classList.add('bi', games[game].icon, 'activity-icon');
+        icon.style.marginLeft = '4px';
+        icon.style.fontSize = '16px';
+        circle.append(icon);
 
-          document.getElementById(`${activityObj.id}-collapse-child`).append(gameCard);
-        });
-      }
+        const gameCard = document.createElement('div');
+        gameCard.classList.add('r-card', 'text-light', 'd-inline-flex');
+        gameCard.style.flexBasis = '100%';
+        gameCard.innerHTML = `<div class="card-body d-flex flex-column h-100 justify-content-between"><div><h5 class="card-title"><i class="bi ${games[game].icon}"></i> ${games[game].displayName}</h5><p class="card-text">${games[game].description}</p></div><button class="rbtn rasper-green m-0 w-100 mt-3" onclick="location.href='/${games[game].id}?json=${activityObj.id}'">Begin</button></div>`;
 
-      [...document.querySelectorAll('[data-bs-toggle="tooltip"]')].map(e => new bootstrap.Tooltip(e))
+        document.getElementById(`${activityObj.id}-collapse-child`).append(gameCard);
+      });
     }
 
-    showActivities();
+    function filterActivities() {
+      const selectedSubjects = subjectCollapse.querySelectorAll('.form-check-input:checked');
+      const selectedActivities = activityCollapse.querySelectorAll('.form-check-input:checked');
+      const selectedExamBoards = examBoardCollapse.querySelectorAll('.form-check-input:checked');
+      const selectedTypes = typeCollapse.querySelectorAll('.form-check-input:checked');
+
+      container.childNodes.forEach(child => {
+        const matchesConditions = [
+          false, // subject
+          false, // activity
+          false, // exam board
+          false // type
+        ];
+
+        if (selectedSubjects.length === 0) matchesConditions[0] = true;
+        else {
+          selectedSubjects.forEach(selectedSubject => {
+            const label = selectedSubject.parentElement.childNodes[1];
+            const selectedSubjectName = label.textContent.split(' (')[0];
+            const childLabel = child.querySelector('small');
+
+            if (childLabel.textContent.indexOf(selectedSubjectName) === 0) matchesConditions[0] = true;
+          });
+        }
+
+        if (selectedActivities.length === 0) matchesConditions[1] = true;
+        else {
+          selectedActivities.forEach(selectedActivity => {
+            const label = selectedActivity.parentElement.childNodes[1];
+            const selectedActivityName = label.textContent.split(' (')[0];
+
+            if (child.querySelector(`.${nameToGameId(selectedActivityName)}`)) matchesConditions[1] = true;
+          });
+        }
+
+        if (selectedExamBoards.length === 0) matchesConditions[2] = true;
+        else {
+          selectedExamBoards.forEach(selectedBoard => {
+            const label = selectedBoard.parentElement.childNodes[1];
+            const selectedBoardName = label.textContent.split(' (')[0];
+
+            if (child.querySelector('span').textContent.indexOf(selectedBoardName) !== -1) matchesConditions[2] = true;
+          });
+        }
+
+        if (selectedTypes.length === 0) matchesConditions[3] = true;
+        else {
+          selectedTypes.forEach(selectedType => {
+            const label = selectedType.parentElement.childNodes[1];
+            const selectedTypeName = label.textContent.split(' (')[0];
+
+            if (child.querySelector('span').textContent.indexOf(selectedTypeName) !== -1) matchesConditions[3] = true;
+          });
+        }
+
+        if (matchesConditions.every(Boolean)) child.classList.remove('d-none');
+        else child.classList.add('d-none');
+      });
+
+      if ([...container.children].every(x => x.classList.contains('d-none'))) {
+        document.querySelector('.no-results').classList.remove('d-none');
+      } else {
+        document.querySelector('.no-results').classList.add('d-none');
+      }
+    }
 
   </script>
 
