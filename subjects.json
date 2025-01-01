@@ -14,11 +14,11 @@
     {
       "displayName": "Biology",
       "id": "bology",
-      "examBoard": "AQA",
       "children": [
         {
           "displayName": "Cell biology",
           "id": "b1",
+          "examBoard": "AQA",
           "revise": [
             0
           ],
@@ -27,6 +27,7 @@
         {
           "displayName": "Organisation",
           "id": "b2-organisation",
+          "examBoard": "AQA",
           "revise": [
             0
           ],
@@ -35,6 +36,7 @@
         {
           "displayName": "Infection and response",
           "id": "b3-infection-and-response",
+          "examBoard": "AQA",
           "revise": [
             0
           ],
@@ -43,6 +45,7 @@
         {
           "displayName": "Bioenergetics",
           "id": "bioenergetics",
+          "examBoard": "AQA",
           "revise": [
             0
           ],
@@ -51,6 +54,7 @@
         {
           "displayName": "Homeostasis and response",
           "id": "homeostasis-and-response",
+          "examBoard": "AQA",
           "revise": [
             0
           ],
@@ -61,11 +65,11 @@
     {
       "displayName": "Chemistry",
       "id": "chemstry",
-      "examBoard": "AQA",
       "children": [
         {
           "displayName": "Atomic structure",
           "id": "c1",
+          "examBoard": "AQA",
           "revise": [
             0
           ],
@@ -74,6 +78,7 @@
         {
           "displayName": "Structure and bonding",
           "id": "c2",
+          "examBoard": "AQA",
           "revise": [
             0
           ],
@@ -82,6 +87,7 @@
         {
           "displayName": "Quantitative Chemistry",
           "id": "c3-quantitative-chemistry",
+          "examBoard": "AQA",
           "revise": [
             0
           ],
@@ -90,6 +96,7 @@
         {
           "displayName": "Electrolysis",
           "id": "chemistry-electrolysis",
+          "examBoard": "AQA",
           "revise": [
             0
           ],
@@ -98,6 +105,7 @@
         {
           "displayName": "Energy changes",
           "id": "chemistry-energy-changes",
+          "examBoard": "AQA",
           "revise": [
             0
           ],
@@ -106,6 +114,7 @@
         {
           "displayName": "Reactivity series",
           "id": "chemistry-reactivity-series",
+          "examBoard": "AQA",
           "revise": [
             3
           ],
@@ -116,11 +125,11 @@
     {
       "displayName": "Computer Science",
       "id": "compsc",
-      "examBoard": "AQA",
       "children": [
         {
           "displayName": "Algorithms",
           "id": "unit1",
+          "examBoard": "AQA",
           "revise": [
             0
           ],
@@ -129,6 +138,7 @@
         {
           "displayName": "Programming",
           "id": "unit2",
+          "examBoard": "AQA",
           "revise": [
             0
           ],
@@ -137,6 +147,7 @@
         {
           "displayName": "Data representation",
           "id": "unit3",
+          "examBoard": "AQA",
           "revise": [
             0
           ],
@@ -145,6 +156,7 @@
         {
           "displayName": "Computer systems",
           "id": "unit4",
+          "examBoard": "AQA",
           "revise": [
             0
           ],
@@ -153,6 +165,7 @@
         {
           "displayName": "Computer networks",
           "id": "unit5",
+          "examBoard": "AQA",
           "revise": [
             0
           ],
@@ -161,6 +174,7 @@
         {
           "displayName": "Cyber security",
           "id": "computer-science-cyber-security",
+          "examBoard": "AQA",
           "revise": [
             0,
             1
@@ -170,6 +184,7 @@
         {
           "displayName": "Relational databases and SQL",
           "id": "computer-science-databases",
+          "examBoard": "AQA",
           "revise": [
             0
           ],
@@ -180,11 +195,11 @@
     {
       "displayName": "Economics",
       "id": "economcs",
-      "examBoard": "AQA",
       "children": [
         {
           "displayName": "Economic foundations",
           "id": "economic-foundations",
+          "examBoard": "AQA",
           "revise": [
             0
           ],
@@ -193,6 +208,7 @@
         {
           "displayName": "Resource allocation",
           "id": "Resource-allocation",
+          "examBoard": "AQA",
           "revise": [
             0
           ],
@@ -201,6 +217,7 @@
         {
           "displayName": "How prices are determined",
           "id": "how-prices-are-determined",
+          "examBoard": "AQA",
           "revise": [
             0
           ],
@@ -209,6 +226,7 @@
         {
           "displayName": "Production, costs, revenue and profit",
           "id": "production-costs-revenue-profit",
+          "examBoard": "AQA",
           "revise": [
             0
           ],
@@ -217,6 +235,7 @@
         {
           "displayName": "How the economy works",
           "id": "how-the-economy-works",
+          "examBoard": "AQA",
           "revise": [
             0
           ],
@@ -227,11 +246,11 @@
     {
       "displayName": "English",
       "id": "englsh",
-      "examBoard": "AQA",
       "children": [
         {
           "displayName": "Macbeth",
           "id": "macbeth",
+          "examBoard": "AQA",
           "revise": [
             2
           ],
@@ -240,6 +259,7 @@
         {
           "displayName": "A Christmas Carol",
           "id": "christmas_carol",
+          "examBoard": "AQA",
           "revise": [
             2
           ],
@@ -248,6 +268,7 @@
         {
           "displayName": "Power and Conflict anthology",
           "id": "english-lit-power-and-conflict",
+          "examBoard": "AQA",
           "revise": [
             2
           ],
@@ -258,11 +279,11 @@
     {
       "displayName": "German",
       "id": "german",
-      "examBoard": "Edexcel",
       "children": [
         {
           "displayName": "Acronyms",
           "id": "acronyms",
+          "examBoard": "Edexcel",
           "revise": [
             0
           ],
@@ -271,6 +292,7 @@
         {
           "displayName": "Colours",
           "id": "colours",
+          "examBoard": "Edexcel",
           "revise": [
             0
           ],
@@ -279,6 +301,7 @@
         {
           "displayName": "Common adjectives",
           "id": "adjectives",
+          "examBoard": "Edexcel",
           "revise": [
             0
           ],
@@ -287,6 +310,7 @@
         {
           "displayName": "Common adverbs",
           "id": "adverbs",
+          "examBoard": "Edexcel",
           "revise": [
             0
           ],
@@ -295,6 +319,7 @@
         {
           "displayName": "Common prepositions",
           "id": "prepositions",
+          "examBoard": "Edexcel",
           "revise": [
             0
           ],
@@ -303,6 +328,7 @@
         {
           "displayName": "Common verbs",
           "id": "verbs",
+          "examBoard": "Edexcel",
           "revise": [
             0
           ],
@@ -311,6 +337,7 @@
         {
           "displayName": "Cultural life",
           "id": "cultural-life",
+          "examBoard": "Edexcel",
           "revise": [
             0
           ],
@@ -319,6 +346,7 @@
         {
           "displayName": "Daily life, food and drink",
           "id": "daily-life-food-drink",
+          "examBoard": "Edexcel",
           "revise": [
             0
           ],
@@ -327,6 +355,7 @@
         {
           "displayName": "Dealing with problems",
           "id": "problems",
+          "examBoard": "Edexcel",
           "revise": [
             0
           ],
@@ -335,6 +364,7 @@
         {
           "displayName": "Dialogue, messaging and social media",
           "id": "dialogue-and-messaging",
+          "examBoard": "Edexcel",
           "revise": [
             0
           ],
@@ -343,6 +373,7 @@
         {
           "displayName": "Directions",
           "id": "directions",
+          "examBoard": "Edexcel",
           "revise": [
             0
           ],
@@ -351,6 +382,7 @@
         {
           "displayName": "Dress and style",
           "id": "dress-and-style",
+          "examBoard": "Edexcel",
           "revise": [
             0
           ],
@@ -359,6 +391,7 @@
         {
           "displayName": "Geography",
           "id": "geography",
+          "examBoard": "Edexcel",
           "revise": [
             0
           ],
@@ -367,6 +400,7 @@
         {
           "displayName": "International and Global Dimension",
           "id": "international-and-global-dimension",
+          "examBoard": "Edexcel",
           "revise": [
             0
           ],
@@ -375,6 +409,7 @@
         {
           "displayName": "Local Area, Holiday and Travel",
           "id": "local-area-holiday-travel",
+          "examBoard": "Edexcel",
           "revise": [
             0
           ],
@@ -383,6 +418,7 @@
         {
           "displayName": "Numbers",
           "id": "numbers",
+          "examBoard": "Edexcel",
           "revise": [
             0
           ],
@@ -391,6 +427,7 @@
         {
           "displayName": "Quantities and Measures",
           "id": "quantities-and-measures",
+          "examBoard": "Edexcel",
           "revise": [
             0
           ],
@@ -399,6 +436,7 @@
         {
           "displayName": "Relations, Relationships, Personal and Physical Characteristics",
           "id": "relations-relationships-personal-and-physical-characteristics",
+          "examBoard": "Edexcel",
           "revise": [
             0
           ],
@@ -407,6 +445,7 @@
         {
           "displayName": "School",
           "id": "school",
+          "examBoard": "Edexcel",
           "revise": [
             0
           ],
@@ -415,6 +454,7 @@
         {
           "displayName": "Social conventions",
           "id": "social-conventions",
+          "examBoard": "Edexcel",
           "revise": [
             0
           ],
@@ -423,6 +463,7 @@
         {
           "displayName": "Times, Days, Months and Seasons",
           "id": "times-days-months-seasons",
+          "examBoard": "Edexcel",
           "revise": [
             0
           ],
@@ -431,6 +472,7 @@
         {
           "displayName": "Useful words and phrases",
           "id": "useful-words-and-expressions",
+          "examBoard": "Edexcel",
           "revise": [
             0
           ],
@@ -439,6 +481,7 @@
         {
           "displayName": "Weather",
           "id": "weather",
+          "examBoard": "Edexcel",
           "revise": [
             0
           ],
@@ -447,6 +490,7 @@
         {
           "displayName": "Work",
           "id": "work",
+          "examBoard": "Edexcel",
           "revise": [
             0
           ],
@@ -455,6 +499,7 @@
         {
           "displayName": "Reading in German",
           "id": "german-reading",
+          "examBoard": "Edexcel",
           "revise": [
             1
           ],
@@ -465,11 +510,11 @@
     {
       "displayName": "History",
       "id": "hstory",
-      "examBoard": "Edexcel",
       "children": [
         {
           "displayName": "Cold War",
           "id": "cold_war",
+          "examBoard": "Edexcel",
           "revise": [
             0,
             2
@@ -479,6 +524,7 @@
         {
           "displayName": "Germany 1918-1939",
           "id": "germany1918-1939",
+          "examBoard": "Edexcel",
           "revise": [
             0
           ],
@@ -489,11 +535,11 @@
     {
       "displayName": "Mathematics",
       "id": "maths",
-      "examBoard": "Edexcel",
       "children": [
         {
           "displayName": "Trigonometric Exact Values",
           "id": "sohcahtoa_exact_values",
+          "examBoard": "Edexcel",
           "revise": [
             0
           ],
@@ -504,11 +550,11 @@
     {
       "displayName": "Music",
       "id": "musik",
-      "examBoard": "OCR",
       "children": [
         {
           "displayName": "Describing music",
           "id": "describing_music",
+          "examBoard": "OCR",
           "revise": [
             0
           ],
@@ -520,6 +566,7 @@
             {
               "displayName": "Samba",
               "id": "samba",
+              "examBoard": "OCR",
               "revise": [
                 0
               ],
@@ -528,6 +575,7 @@
             {
               "displayName": "Calypso",
               "id": "calypso",
+              "examBoard": "OCR",
               "revise": [
                 0
               ],
@@ -541,6 +589,7 @@
             {
               "displayName": "Film music",
               "id": "film-music",
+              "examBoard": "OCR",
               "revise": [
                 0
               ],
@@ -549,6 +598,7 @@
             {
               "displayName": "Computer game music",
               "id": "video-game-music",
+              "examBoard": "OCR",
               "revise": [
                 0
               ],
@@ -561,11 +611,11 @@
     {
       "displayName": "Physics",
       "id": "physcs",
-      "examBoard": "AQA",
       "children": [
         {
           "displayName": "Equations",
           "id": "physics_equations",
+          "examBoard": "AQA",
           "revise": [
             4
           ],
@@ -574,6 +624,7 @@
         {
           "displayName": "Energy",
           "id": "physics-energy",
+          "examBoard": "AQA",
           "revise": [
             0
           ],
@@ -582,6 +633,7 @@
         {
           "displayName": "Electricity",
           "id": "physics-electricity",
+          "examBoard": "AQA",
           "revise": [
             0
           ],
@@ -590,6 +642,7 @@
         {
           "displayName": "Particle model of matter",
           "id": "physics-particle-model",
+          "examBoard": "AQA",
           "revise": [
             0
           ],

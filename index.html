@@ -222,32 +222,21 @@
         document.getElementById('subjectsCollapse').append(subjectBtn);
 
         subject.children.forEach(child => {
-          if (child.revise) {
-            child.revise.forEach(game => {
-              if (activityCounter[game]) activityCounter[game]++;
-              else activityCounter[game] = 1;
-            });
-          } else {
-            child.children.forEach(grandchild => {
-              grandchild.revise.forEach(game => {
-                if (activityCounter[game]) activityCounter[game]++;
-                else activityCounter[game] = 1;
-              });
-            })
-          }
+          const reviseGames = child.revise || child.children.flatMap(grandchild => grandchild.revise);
+          const types = child.type ? [child.type] : child.children.map(grandchild => grandchild.type);
+          const examBoards = child.examBoard ? [child.examBoard] : child.children.map(grandchild => grandchild.examBoard);
 
-          if (examBoardCounter[subject.examBoard]) examBoardCounter[subject.examBoard]++;
-          else examBoardCounter[subject.examBoard] = 1;
+          reviseGames.forEach(game => {
+            activityCounter[game] = activityCounter[game] ? activityCounter[game] + 1 : 1;
+          });
 
-          if (child.type) {
-            if (activityTypeCounter[child.type]) activityTypeCounter[child.type]++;
-            else activityTypeCounter[child.type] = 1;
-          } else {
-            child.children.forEach(grandchild => {
-              if (activityTypeCounter[grandchild.type]) activityTypeCounter[grandchild.type]++;
-              else activityTypeCounter[grandchild.type] = 1;
-            });
-          }
+          types.forEach(type => {
+            activityTypeCounter[type] = activityTypeCounter[type] ? activityTypeCounter[type] + 1 : 1;
+          });
+
+          examBoards.forEach(board => {
+            examBoardCounter[board] = examBoardCounter[board] ? examBoardCounter[board] + 1 : 1;
+          });
         });
       });
 
@@ -306,19 +295,19 @@
       subjects[1].forEach(subject => {
         subject.children.forEach(topic => {
           if (!topic.children) {
-            createActivityHTML(topic, subject, subject.displayName);
+            createActivityHTML(topic, subject.displayName);
             return;
           }
-          topic.children.forEach(child => createActivityHTML(child, subject, `${subject.displayName} > ${topic.displayName}`));
+          topic.children.forEach(child => createActivityHTML(child, `${subject.displayName} > ${topic.displayName}`));
         });
       });
 
       [...document.querySelectorAll('[data-bs-toggle="tooltip"]')].map(e => new bootstrap.Tooltip(e))
     }
 
-    function createActivityHTML(activityObj, parentObj, parent) {
+    function createActivityHTML(activityObj, parent) {
       const activity = document.createElement('div');
-      activity.innerHTML = `<div class="activity-card"><div class="p-3"><h5><b>${activityObj.displayName}</b> <small style="font-size: 1rem;">${parent}</small></h5><div class="d-flex align-items-center"><div class="games ${activityObj.id}-games d-flex align-items-center"></div><span class=ms-2>• ${activityObj.type} • ${parentObj.examBoard}</span></div></div><div><button class="btn btn-secondary disabled">Learn</button><button class="rbtn rasper-green" data-bs-toggle="collapse" data-bs-target="#${activityObj.id}-collapse">Revise</button></div></div><div class="collapse" id="${activityObj.id}-collapse"><div class="d-flex" id="${activityObj.id}-collapse-child"></div></div>`;
+      activity.innerHTML = `<div class="activity-card"><div class="p-3"><h5><b>${activityObj.displayName}</b> <small style="font-size: 1rem;">${parent}</small></h5><div class="d-flex align-items-center"><div class="games ${activityObj.id}-games d-flex align-items-center"></div><span class=ms-2>• ${activityObj.type} • ${activityObj.examBoard}</span></div></div><div><button class="btn btn-secondary disabled">Learn</button><button class="rbtn rasper-green" data-bs-toggle="collapse" data-bs-target="#${activityObj.id}-collapse">Revise</button></div></div><div class="collapse" id="${activityObj.id}-collapse"><div class="d-flex" id="${activityObj.id}-collapse-child"></div></div>`;
       activity.classList.add('activity-wrapper');
 
       container.append(activity);
@@ -406,11 +395,9 @@
         else child.classList.add('d-none');
       });
 
-      if ([...container.children].every(x => x.classList.contains('d-none'))) {
-        document.querySelector('.no-results').classList.remove('d-none');
-      } else {
-        document.querySelector('.no-results').classList.add('d-none');
-      }
+      // displays no results text if there are no results
+      const noResults = [...container.children].every(x => x.classList.contains('d-none'));
+      document.querySelector('.no-results').classList.toggle('d-none', !noResults);
     }
 
   </script>
